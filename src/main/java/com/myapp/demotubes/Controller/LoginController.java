@@ -1,6 +1,7 @@
 package com.myapp.demotubes.Controller;
 
 import com.myapp.demotubes.Entities.Akun;
+import com.myapp.demotubes.Entities.Session;
 import com.myapp.demotubes.HelloApplication;
 import com.myapp.demotubes.Services.LoginService;
 import javafx.fxml.FXML;
@@ -50,10 +51,12 @@ public class LoginController {
             System.out.println("Login Successful");
             switch (akun.getRole()){
                 case ADMIN:
+                    Session.setCurrentAkun(akun);
                     loadAdminPage();
                     break;
                 case USER:
-                    loadUserPage(akun);
+                    Session.setCurrentAkun(akun);
+                    loadUserPage();
                     break;
             }
         }
@@ -90,13 +93,13 @@ public class LoginController {
         stage.show();
     }
 
-    private void loadUserPage(Akun akun) throws IOException {
+    private void loadUserPage() throws IOException {
 
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("view/user-view.fxml"));
         Parent root = loader.load();
 
-        UserPageController userPageController = loader.getController(); //NGOPER AKUN
-        userPageController.setAkun(akun);
+//        UserPageController userPageController = loader.getController(); //NGOPER AKUN
+//        userPageController.setAkun(akun);
 
         Stage stage = (Stage) loginPane.getScene().getWindow();
         stage.setScene(new Scene(root));

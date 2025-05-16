@@ -2,28 +2,18 @@ package com.myapp.demotubes.Entities;
 
 import com.myapp.demotubes.Entities.Properties.Roles;
 
-public class Akun extends Entity {
+public abstract class Akun {
+    private int id;
+    private String username;
     private String password;
     private Roles role;
     private String id_warga = null;
 
-    public Akun(int id, String name, String password, Roles role) {
-        super(id, name);
+    public Akun(int id, String username, String password, Roles role) {
+        this.id = id;
+        this.username = username;
         this.password = password;
         this.role = role;
-    }
-
-    public Akun(int id, String name, String password, Roles role, String id_warga) {
-        super(id, name);
-        this.password = password;
-        this.role = role;
-        this.id_warga = id_warga;
-    }
-
-    public Akun(){}
-
-    public Roles getRole() {
-        return role;
     }
 
     public String getPassword() {
@@ -33,6 +23,20 @@ public class Akun extends Entity {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public Akun(int id, String username, String password, Roles role, String id_warga) {
+        this.id = id;
+        this.username = username;
+        this.role = role;
+        this.id_warga = id_warga;
+        this.password = password;
+    }
+
+
+    public Roles getRole() {
+        return role;
+    }
+
 
     public void setRole(Roles role) {
         this.role = role;
@@ -45,4 +49,23 @@ public class Akun extends Entity {
     public void setId_warga(String id_warga) {
         this.id_warga = id_warga;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    abstract void showDashboard();
+
 }

@@ -1,6 +1,7 @@
 package com.myapp.demotubes.Controller;
 
 import com.myapp.demotubes.Entities.Akun;
+import com.myapp.demotubes.Entities.Session;
 import com.myapp.demotubes.HelloApplication;
 import com.myapp.demotubes.Services.UserPageService;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -19,14 +21,13 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class UserPageController {
-    private Akun akun;
+    private Akun akun = Session.getCurrentAkun();
 
     @FXML
     private AnchorPane UserPagePane;
 
-    public void setAkun(Akun akun) {
-       this.akun = akun;
-    }
+    @FXML
+    private Label namaLabel;
 
     public void loaderInsertData() throws IOException {
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("view/insert-user-data-view.fxml"));
@@ -51,5 +52,6 @@ public class UserPageController {
             alert.show();
         }
 
+        namaLabel.setText(akun.getUsername());
     }
 }

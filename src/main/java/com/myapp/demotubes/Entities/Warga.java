@@ -2,7 +2,9 @@ package com.myapp.demotubes.Entities;
 
 import com.myapp.demotubes.Entities.Properties.*;
 
-public class Penduduk extends Entity {
+public class Warga {
+    private int id;
+    private String name;
     private JenisKelamin jenisKelamin;
     private String tanggalLahir;
     private String tempatLahir;
@@ -13,8 +15,9 @@ public class Penduduk extends Entity {
     private StatusPekerjaan statusPekerjaan;
     private StatusKawin statusKawin;
 
-    public Penduduk(int id, String name, JenisKelamin jenisKelamin, String tanggalLahir, String tempatLahir, String alamatLengkap, Agama agama, String nik, String nomorKK, StatusPekerjaan statusPekerjaan, StatusKawin statusKawin) {
-        super(id, name);
+    public Warga(int id, String name, JenisKelamin jenisKelamin, String tanggalLahir, String tempatLahir, String alamatLengkap, Agama agama, String nik, String nomorKK, StatusPekerjaan statusPekerjaan, StatusKawin statusKawin) {
+        this.id = id;
+        this.name = name;
         this.jenisKelamin = jenisKelamin;
         this.tanggalLahir = tanggalLahir;
         this.tempatLahir = tempatLahir;
@@ -24,6 +27,22 @@ public class Penduduk extends Entity {
         this.nomorKK = nomorKK;
         this.statusPekerjaan = statusPekerjaan;
         this.statusKawin = statusKawin;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public JenisKelamin getJenisKelamin() {

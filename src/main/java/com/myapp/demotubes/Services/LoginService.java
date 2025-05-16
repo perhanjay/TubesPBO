@@ -1,8 +1,10 @@
 package com.myapp.demotubes.Services;
 
 import com.myapp.demotubes.Controller.UserPageController;
+import com.myapp.demotubes.Entities.Admin;
 import com.myapp.demotubes.Entities.Akun;
 import com.myapp.demotubes.Entities.Properties.Roles;
+import com.myapp.demotubes.Entities.User;
 import javafx.scene.control.Alert;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -19,10 +21,18 @@ public class LoginService {
             Statement stmt = conn.createStatement();
             System.out.println(username);
             String url = "SELECT * FROM akun WHERE username = '" + username + "';";
+            System.out.println(url);
             ResultSet resultSet = stmt.executeQuery(url);
             if (resultSet.next()) {
-                return new Akun(resultSet.getInt("id_akun"), resultSet.getString("username"), resultSet.getString("password"), Roles.valueOf(resultSet.getString("role")));
+               if (resultSet.getString("role").equals(Roles.USER.toString())) {
+                   System.out.println(resultSet.getString("password"));
+                   return new User(resultSet.getInt("id_akun"), resultSet.getString("username"), resultSet.getString("password"), Roles.USER, resultSet.getString("id_warga"));
+               } else if (resultSet.getString("role").equals(Roles.ADMIN.toString())) {
+                   System.out.println(resultSet.getString("password"));
+                   return new Admin(resultSet.getInt("id_akun"), resultSet.getString("username"), resultSet.getString("password"), Roles.ADMIN);
+               }
             } else {
+                System.out.println("Not found akun on getakunbyusername");
                 return null;
             }
         } catch (SQLException e) {
