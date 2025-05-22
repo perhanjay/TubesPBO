@@ -2,6 +2,8 @@ package com.myapp.demotubes.Entities;
 
 import com.myapp.demotubes.Entities.Properties.*;
 
+import java.time.LocalDate;
+
 public class Warga {
     private int id;
     private String name;
@@ -11,11 +13,10 @@ public class Warga {
     private String alamatLengkap;
     private Agama agama;
     private String nik;
-    private String nomorKK;
     private StatusPekerjaan statusPekerjaan;
     private StatusKawin statusKawin;
 
-    public Warga(int id, String name, JenisKelamin jenisKelamin, String tanggalLahir, String tempatLahir, String alamatLengkap, Agama agama, String nik, String nomorKK, StatusPekerjaan statusPekerjaan, StatusKawin statusKawin) {
+    public Warga(int id, String name, JenisKelamin jenisKelamin, String tanggalLahir,String tempatLahir, String alamatLengkap, Agama agama, String nik, StatusPekerjaan statusPekerjaan, StatusKawin statusKawin) {
         this.id = id;
         this.name = name;
         this.jenisKelamin = jenisKelamin;
@@ -24,7 +25,6 @@ public class Warga {
         this.alamatLengkap = alamatLengkap;
         this.agama = agama;
         this.nik = nik;
-        this.nomorKK = nomorKK;
         this.statusPekerjaan = statusPekerjaan;
         this.statusKawin = statusKawin;
     }
@@ -93,13 +93,6 @@ public class Warga {
         this.nik = nik;
     }
 
-    public String getNomorKK() {
-        return nomorKK;
-    }
-
-    public void setNomorKK(String nomorKK) {
-        this.nomorKK = nomorKK;
-    }
 
     public StatusPekerjaan getStatusPekerjaan() {
         return statusPekerjaan;
@@ -115,6 +108,14 @@ public class Warga {
 
     public void setStatusKawin(StatusKawin statusKawin) {
         this.statusKawin = statusKawin;
+    }
+
+    public String getAlamat() {
+        return alamatLengkap;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamatLengkap = alamat;
     }
 
 }

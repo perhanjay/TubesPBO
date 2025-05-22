@@ -1,7 +1,7 @@
 package com.myapp.demotubes.Controller;
 
 import com.myapp.demotubes.Entities.Akun;
-import com.myapp.demotubes.Entities.Session;
+import com.myapp.demotubes.Entities.Sessions.SessionAkun;
 import com.myapp.demotubes.HelloApplication;
 import com.myapp.demotubes.Services.LoginService;
 import javafx.fxml.FXML;
@@ -18,14 +18,20 @@ import java.sql.SQLException;
 
 public class LoginController {
     @FXML
-    private Label welcomeText;
+    private TextField nikField;
 
     @FXML
-    private Label usernameText;
+    private TextField usernameRegisterField;
 
     @FXML
-    private Label usernamePasswordText;
+    private PasswordField passwordRegisterField;
 
+    @FXML
+    private PasswordField passwordAgainField;
+
+
+    @FXML
+    private Label loginLabel;
     @FXML
     private TextField usernameField;
 
@@ -39,6 +45,10 @@ public class LoginController {
     private Button registerButton;
 
     @FXML
+    private Label registerLabel;
+
+
+    @FXML
     private AnchorPane loginPane;
 
     @FXML
@@ -47,15 +57,16 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
         Akun akun = loginService.validateLogin(username, password);
+
         if(akun != null) {
             System.out.println("Login Successful");
             switch (akun.getRole()){
                 case ADMIN:
-                    Session.setCurrentAkun(akun);
+                    SessionAkun.setCurrentAkun(akun);
                     loadAdminPage();
                     break;
                 case USER:
-                    Session.setCurrentAkun(akun);
+                    SessionAkun.setCurrentAkun(akun);
                     loadUserPage();
                     break;
             }
@@ -65,48 +76,88 @@ public class LoginController {
     @FXML
     private void buttonRegisterOnClick() throws SQLException, IOException {
         LoginService loginService = new LoginService();
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-        Akun akun = loginService.getAkunByUsername(username);
-        if(akun == null) {
-            loginService.registerAkun(username, password);
+        String username = usernameRegisterField.getText();
+        String password = passwordRegisterField.getText();
+        Akun akun = null;
+        Integer idWarga = null;
+        try {
+            idWarga = loginService.getIdWargaByNIK(nikField.getText());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            akun = loginService.getAkunByUsername(username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        if(!(password.equals(passwordAgainField.getText()))) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Register Gagal");
+            alert.setContentText("Password tidak sama.");
+            alert.showAndWait();
+        } else if (akun == null) {
+            try{
+                loginService.registerAkun(username, password, idWarga);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Register Berhasil");
             alert.setContentText("Anda berhasil melakukan register. Silahkan Login.");
             alert.show();
-        } else {
+        }  else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Register Gagal");
             alert.setContentText("Register gagal. Ganti username.");
-            alert.show();
+            alert.showAndWait();
         }
+    }
+
+    private void pageLoader(String path, String title){
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(path));
+        try {
+            Parent root = fxmlLoader.load();
+            Stage stage = (Stage) loginPane.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle(title);
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void registerPageLoader(){
+        pageLoader("view/register-view.fxml", "Register");
+    }
+
+    @FXML
+    private void loginPageLoader(){
+       pageLoader("view/login-view.fxml", "Login");
     }
 
     private void loadAdminPage() throws IOException {
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("view/admin-view.fxml"));
         System.out.println(loader);
         Parent root = loader.load();
-
         Stage stage = (Stage) loginPane.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.setTitle("Dashboard");
+        stage.centerOnScreen();
         stage.show();
     }
 
     private void loadUserPage() throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("view/user-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("view/userDashboard.fxml"));
         Parent root = loader.load();
-
-//        UserPageController userPageController = loader.getController(); //NGOPER AKUN
-//        userPageController.setAkun(akun);
-
         Stage stage = (Stage) loginPane.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.setTitle("User");
+        stage.centerOnScreen();
         stage.show();
     }
-
-
 
 }

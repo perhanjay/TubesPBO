@@ -7,7 +7,7 @@ public class User extends Akun{
         super(id, username, password, role);
     }
 
-    public User(int id, String username, String password, Roles role, String id_warga) {
+    public User(int id, String username, String password, Roles role, int id_warga) {
         super(id, username, password, role, id_warga);
     }
 

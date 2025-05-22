@@ -18,13 +18,13 @@
       </ImageView>
       <AnchorPane id="containerBoxPane" layoutX="212.0" layoutY="73.0" minHeight="376.0" minWidth="366.0" prefHeight="376.0" prefWidth="366.0" AnchorPane.topAnchor="73.0">
          <children>
-            <Button id="buttonLogin" fx:id="loginButton" layoutX="62.0" layoutY="236.0" mnemonicParsing="false" onAction="#buttonLoginOnClick" prefHeight="35.0" prefWidth="242.0" stylesheets="@Styles/loginStyle.css" text="Login" textFill="WHITE" />
-            <TextField id="usernameTextField" fx:id="usernameField" layoutX="62.0" layoutY="117.0" prefHeight="35.0" prefWidth="242.0" promptText="Username" stylesheets="@Styles/loginStyle.css">
+            <Button id="buttonRegister" fx:id="registerButton" layoutX="61.0" layoutY="283.0" mnemonicParsing="false" onAction="#buttonRegisterOnClick" prefHeight="35.0" prefWidth="242.0" stylesheets="@Styles/loginStyle.css" text="Register" textFill="WHITE" />
+            <TextField id="usernameTextField" fx:id="usernameRegisterField" layoutX="61.0" layoutY="152.0" prefHeight="35.0" prefWidth="242.0" promptText="Username" stylesheets="@Styles/loginStyle.css">
                <font>
                   <Font name="0xProto Nerd Font Propo" size="13.0" />
                </font>
             </TextField>
-            <PasswordField id="passwordTextField" fx:id="passwordField" layoutX="61.0" layoutY="161.0" prefHeight="35.0" prefWidth="242.0" promptText="Password">
+            <PasswordField id="passwordTextField" fx:id="passwordRegisterField" layoutX="61.0" layoutY="195.0" prefHeight="35.0" prefWidth="242.0" promptText="Password">
                <font>
                   <Font name="0xProto Nerd Font Mono" size="13.0" />
                </font>
@@ -34,10 +34,20 @@
                   <Image url="@img/sipedesLogo.png" />
                </image>
             </ImageView>
-            <Label layoutX="62.0" layoutY="289.0" text="Belum memilki akun ?" />
-            <Label fx:id="registerLabel" layoutX="196.0" layoutY="289.0" onMouseClicked="#registerPageLoader" text="  daftar sekarang">
+            <PasswordField id="passwordTextField" fx:id="passwordAgainField" layoutX="60.0" layoutY="237.0" prefHeight="35.0" prefWidth="242.0" promptText="Konfirmasi Password">
                <font>
-                  <Font name="FreeSans Bold" size="13.0" />
+                  <Font name="0xProto Nerd Font Mono" size="13.0" />
+               </font>
+            </PasswordField>
+            <TextField id="usernameTextField" fx:id="nikField" layoutX="61.0" layoutY="108.0" prefHeight="35.0" prefWidth="242.0" promptText="NIK" stylesheets="@Styles/loginStyle.css">
+               <font>
+                  <Font name="0xProto Nerd Font Propo" size="13.0" />
+               </font>
+            </TextField>
+            <Label layoutX="61.0" layoutY="327.0" text="Kembali ke laman" />
+            <Label fx:id="loginLabel" layoutX="173.0" layoutY="327.0" onMouseClicked="#loginPageLoader" text="Login">
+               <font>
+                  <Font name="System Bold" size="13.0" />
                </font>
             </Label>
          </children>

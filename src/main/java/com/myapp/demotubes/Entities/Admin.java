@@ -7,12 +7,11 @@ public class Admin extends Akun{
         super(id, username, password, role);
     }
 
-    public Admin(int id, String username, String password, Roles role, String id_warga) {
+    public Admin(int id, String username, String password, Roles role, int id_warga) {
         super(id, username, password, role, id_warga);
     }
 
     @Override
     void showDashboard() {
-
     }
 }

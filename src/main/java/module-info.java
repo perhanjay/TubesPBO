@@ -14,4 +14,6 @@ module com.myapp.demotubes {
     opens com.myapp.demotubes.Entities.Properties to javafx.fxml;
     exports com.myapp.demotubes.Controller;
     opens com.myapp.demotubes.Controller to javafx.fxml;
+    exports com.myapp.demotubes.Entities.Sessions;
+    opens com.myapp.demotubes.Entities.Sessions to javafx.fxml;
 }

@@ -1,0 +1,20 @@
+#loginPane {
+    -fx-background-color: #2E2E2E;
+
+}
+
+#containerBoxPane {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 20 20 20 20;
+    -fx-background-radius: 20 20 20 20;
+}
+#usernameTextField, #passwordTextField {
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
+}
+
+#buttonRegister, #buttonLogin {
+    -fx-background-color: #2E5077;
+    -fx-border-radius: 20 20 20 20;
+    -fx-background-radius: 20 20 20 20;
+}

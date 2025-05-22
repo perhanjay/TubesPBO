@@ -7,7 +7,7 @@ public abstract class Akun {
     private String username;
     private String password;
     private Roles role;
-    private String id_warga = null;
+    private Integer id_warga;
 
     public Akun(int id, String username, String password, Roles role) {
         this.id = id;
@@ -24,7 +24,7 @@ public abstract class Akun {
         this.password = password;
     }
 
-    public Akun(int id, String username, String password, Roles role, String id_warga) {
+    public Akun(int id, String username, String password, Roles role, int id_warga) {
         this.id = id;
         this.username = username;
         this.role = role;
@@ -42,11 +42,11 @@ public abstract class Akun {
         this.role = role;
     }
 
-    public String getId_warga() {
+    public Integer getIdWarga() {
         return id_warga;
     }
 
-    public void setId_warga(String id_warga) {
+    public void setIdWarga(int id_warga) {
         this.id_warga = id_warga;
     }
 

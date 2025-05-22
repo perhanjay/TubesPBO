@@ -1,6 +1,8 @@
-package com.myapp.demotubes.Entities;
+package com.myapp.demotubes.Entities.Sessions;
 
-public class Session {
+import com.myapp.demotubes.Entities.Akun;
+
+public class SessionAkun {
     private static Akun currentAkun;
 
     public static void setCurrentAkun(Akun akun) {

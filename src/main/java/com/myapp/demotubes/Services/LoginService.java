@@ -13,11 +13,25 @@ import java.sql.*;
 public class LoginService {
     String urlDB = "jdbc:sqlite:src/main/resources/com/myapp/demotubes/db/kependudukan.db";
 
+    public Integer getIdWargaByNIK(String nik) throws SQLException {
+        //transaksi ke db
+        //Return id warga yang didapat
+        try(Connection con = DriverManager.getConnection(urlDB)){
+            Statement stmt = con.createStatement();
+            String url = "SELECT * FROM warga WHERE nik = '" + nik + "';";
+            ResultSet rs = stmt.executeQuery(url);
+            if(rs.next()){
+                return rs.getInt("id_warga");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public Akun getAkunByUsername(String username) throws SQLException {
-        try {
+        try(Connection conn = DriverManager.getConnection(urlDB)){
             System.out.println("Executed getAkunByUsername");
-            Connection conn = DriverManager.getConnection(urlDB);
             Statement stmt = conn.createStatement();
             System.out.println(username);
             String url = "SELECT * FROM akun WHERE username = '" + username + "';";
@@ -26,7 +40,7 @@ public class LoginService {
             if (resultSet.next()) {
                if (resultSet.getString("role").equals(Roles.USER.toString())) {
                    System.out.println(resultSet.getString("password"));
-                   return new User(resultSet.getInt("id_akun"), resultSet.getString("username"), resultSet.getString("password"), Roles.USER, resultSet.getString("id_warga"));
+                   return new User(resultSet.getInt("id_akun"), resultSet.getString("username"), resultSet.getString("password"), Roles.USER, resultSet.getInt("id_warga"));
                } else if (resultSet.getString("role").equals(Roles.ADMIN.toString())) {
                    System.out.println(resultSet.getString("password"));
                    return new Admin(resultSet.getInt("id_akun"), resultSet.getString("username"), resultSet.getString("password"), Roles.ADMIN);
@@ -61,11 +75,11 @@ public class LoginService {
         return akun;
     }
 
-    public void registerAkun(String username, String password) throws SQLException {
-        try{
-        Connection conn = DriverManager.getConnection(urlDB);
+    public void registerAkun(String username, String password, Integer id_warga) throws SQLException {
+        try(Connection conn = DriverManager.getConnection(urlDB)){
         Statement stmt = conn.createStatement();
-        String url = "INSERT INTO akun (username, password, role) VALUES ('" + username + "','" + password + "','USER');";
+        String url = "INSERT INTO akun (username, password, role, id_warga) VALUES ('" + username + "','" + password + "','USER','" + id_warga +"');";
+        System.out.println(url);
         stmt.executeUpdate(url);
 
     } catch(SQLException e) {
