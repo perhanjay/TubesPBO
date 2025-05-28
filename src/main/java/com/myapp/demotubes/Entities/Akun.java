@@ -1,6 +1,7 @@
 package com.myapp.demotubes.Entities;
 
 import com.myapp.demotubes.Entities.Properties.Roles;
+import javafx.stage.Stage;
 
 public abstract class Akun {
     private int id;
@@ -66,6 +67,6 @@ public abstract class Akun {
         this.username = username;
     }
 
-    abstract void showDashboard();
+    public abstract void viewLoader(Stage stage, int index, String title);
 
 }

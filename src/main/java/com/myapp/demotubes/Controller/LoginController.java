@@ -60,16 +60,8 @@ public class LoginController {
 
         if(akun != null) {
             System.out.println("Login Successful");
-            switch (akun.getRole()){
-                case ADMIN:
-                    SessionAkun.setCurrentAkun(akun);
-                    loadAdminPage();
-                    break;
-                case USER:
-                    SessionAkun.setCurrentAkun(akun);
-                    loadUserPage();
-                    break;
-            }
+            SessionAkun.setCurrentAkun(akun);
+            SessionAkun.getCurrentAkun().viewLoader((Stage) loginPane.getScene().getWindow(), 1, "Dashboard");
         }
     }
 
@@ -131,16 +123,16 @@ public class LoginController {
     }
     @FXML
     private void registerPageLoader(){
-        pageLoader("view/register-view.fxml", "Register");
+        pageLoader("view/registerView.fxml", "Register");
     }
 
     @FXML
     private void loginPageLoader(){
-       pageLoader("view/login-view.fxml", "Login");
+       pageLoader("view/loginView.fxml", "Login");
     }
 
     private void loadAdminPage() throws IOException {
-        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("view/admin-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("view/adminDashboardView.fxml"));
         System.out.println(loader);
         Parent root = loader.load();
         Stage stage = (Stage) loginPane.getScene().getWindow();
@@ -151,7 +143,7 @@ public class LoginController {
     }
 
     private void loadUserPage() throws IOException {
-        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("view/userDashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("view/userDashboardView.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) loginPane.getScene().getWindow();
         stage.setScene(new Scene(root));

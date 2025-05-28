@@ -13,7 +13,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Locale.setDefault(Locale.UK);
-        Parent root = FXMLLoader.load(HelloApplication.class.getResource("view/login-view.fxml"));
+        Parent root = FXMLLoader.load(HelloApplication.class.getResource("view/loginView.fxml"));
         Scene scene = new Scene(root);
         stage.setTitle("Login");
         stage.setScene(scene);

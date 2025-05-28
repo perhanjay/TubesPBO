@@ -1,19 +1,17 @@
 package com.myapp.demotubes.Services;
 
-import com.myapp.demotubes.Controller.UserPageController;
 import com.myapp.demotubes.Entities.Admin;
 import com.myapp.demotubes.Entities.Akun;
 import com.myapp.demotubes.Entities.Properties.Roles;
 import com.myapp.demotubes.Entities.User;
 import javafx.scene.control.Alert;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.*;
 
 public class LoginService {
     String urlDB = "jdbc:sqlite:src/main/resources/com/myapp/demotubes/db/kependudukan.db";
 
-    public Integer getIdWargaByNIK(String nik) throws SQLException {
+    public Integer getIdWargaByNIK(String nik) {
         //transaksi ke db
         //Return id warga yang didapat
         try (Connection con = DriverManager.getConnection(urlDB)) {

@@ -70,32 +70,12 @@ public class UserDashboardController {
 
     @FXML
     private void ajukanDokumenOnClick(){
-       try {
-           FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("view/userAjukanDokumen.fxml"));
-           Parent root = loader.load();
-           Stage stage = (Stage) rootAnchorPane.getScene().getWindow();
-           stage.setScene(new Scene(root));
-           stage.setTitle("AjukanDokumen");
-           stage.centerOnScreen();
-           stage.show();
-
-       } catch (Exception e) {
-           System.out.println("Error loading user dashboard: " + e.getMessage());
-       }
+        SessionAkun.getCurrentAkun().viewLoader((Stage) rootAnchorPane.getScene().getWindow(), 2, "Permohonan Dokumen");
     }
+
     @FXML
     private void statusOnClick(){
-        try {
-            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("view/userStatus.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) rootAnchorPane.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Status");
-            stage.centerOnScreen();
-            stage.show();
-        } catch (Exception e) {
-            System.out.println("Error loading user dashboard: " + e.getMessage());
-        }
+        SessionAkun.getCurrentAkun().viewLoader((Stage) rootAnchorPane.getScene().getWindow(), 3, "Status Permohonan");
     }
 
     @FXML
@@ -149,8 +129,6 @@ public class UserDashboardController {
                 System.out.println("User cancelled the operation.");
             }
         });
-
-
     }
 
     @FXML
