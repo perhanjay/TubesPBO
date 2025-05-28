@@ -16,4 +16,12 @@ public enum StatusKawin {
         return statusKawin;
     }
 
+    public static StatusKawin getStatusKawin(String statusKawin) {
+        for (StatusKawin sk : StatusKawin.values()) {
+            if (sk.statusKawin.equalsIgnoreCase(statusKawin)) {
+                return sk;
+            }
+        }
+        throw new IllegalArgumentException("Status Kawin not found: " + statusKawin);
+    }
 }

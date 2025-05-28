@@ -18,4 +18,13 @@ public enum Agama {
     public String toString() {
         return displayName;
     }
+
+    public static Agama getAgama(String displayName) {
+        for (Agama agama : Agama.values()) {
+            if (agama.displayName.equalsIgnoreCase(displayName)) {
+                return agama;
+            }
+        }
+        throw new IllegalArgumentException("Agama not found: " + displayName);
+    }
 }

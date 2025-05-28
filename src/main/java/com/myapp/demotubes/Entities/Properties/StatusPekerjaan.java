@@ -1,7 +1,7 @@
 package com.myapp.demotubes.Entities.Properties;
 
 public enum StatusPekerjaan {
-    WIRASWASTA("Wirauswasta"),
+    WIRASWASTA("Wiraswasta"),
     KARYAWAN_SWASTA("Karyawan Swasta"),
     ASN("ASN / PNS"),
     PELAJAR("Pelajar / Mahasiswa"),
@@ -16,5 +16,14 @@ public enum StatusPekerjaan {
     @Override
     public String toString() {
         return statusPekerjaan;
+    }
+
+    public static StatusPekerjaan getStatusPekerjaan(String statusPekerjaan) {
+        for (StatusPekerjaan sp : StatusPekerjaan.values()) {
+            if (sp.statusPekerjaan.equalsIgnoreCase(statusPekerjaan)) {
+                return sp;
+            }
+        }
+        throw new IllegalArgumentException("Status Pekerjaan not found: " + statusPekerjaan);
     }
 }

@@ -7,6 +7,7 @@ import com.myapp.demotubes.Entities.Properties.StatusKawin;
 import com.myapp.demotubes.Entities.Properties.StatusPekerjaan;
 import com.myapp.demotubes.Entities.Sessions.SessionAkun;
 import com.myapp.demotubes.Entities.Sessions.SessionWarga;
+import com.myapp.demotubes.Entities.Warga;
 import com.myapp.demotubes.HelloApplication;
 import com.myapp.demotubes.Services.UserPageService;
 import javafx.collections.FXCollections;
@@ -19,6 +20,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -74,6 +78,7 @@ public class UserDashboardController {
            stage.setTitle("AjukanDokumen");
            stage.centerOnScreen();
            stage.show();
+
        } catch (Exception e) {
            System.out.println("Error loading user dashboard: " + e.getMessage());
        }
@@ -94,6 +99,61 @@ public class UserDashboardController {
     }
 
     @FXML
+    private void submitButtonOnClick(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Konfirmasi");
+        alert.setContentText("Mohon pastikan data yang anda masukkan sudah benar. Apakah anda yakin ingin mengirim data ini?");
+        alert.setHeaderText(null);
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                try {
+                    String nama = textFieldNama.getText();
+                    String nik = textFieldNIK.getText();
+                    String jenisKelamin = JenisKelamin.getJenisKelamin(boxJenisKelamin.getValue().toString()).name();
+                    String tanggalLahir = datePickerTglLahir.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                    String tempatLahir = textFieldTempatLahir.getText();
+                    String alamat = textFieldAlamatLengkap.getText();
+                    String agama = Agama.getAgama(boxAgama.getValue().toString()).name();
+                    String statusPekerjaan = StatusPekerjaan.getStatusPekerjaan(boxStatusPekerjaan.getValue().toString()).name();
+                    String statusKawin = StatusKawin.getStatusKawin(boxStatusKawin.getValue().toString()).name();
+
+                    int wargaId = 0;
+
+                    try{
+                        //masukkan data warga ke db
+                        UserPageService.insertWargaToDB(nama, jenisKelamin, tanggalLahir, tempatLahir, alamat, agama, nik, statusPekerjaan, statusKawin);
+                        //ambil id warga dari db
+                        wargaId = UserPageService.getWargaId(nik);
+                        //Buat instance Warga
+                        Warga warga = new Warga(wargaId, nama, JenisKelamin.valueOf(jenisKelamin), tanggalLahir, tempatLahir, alamat, Agama.valueOf(agama), nik, StatusPekerjaan.valueOf(statusPekerjaan), StatusKawin.valueOf(statusKawin));
+                        //set session warga
+                        SessionWarga.setCurrentWarga(warga);
+                        //update akun dengan id warga / mengaitkan akun dengan warga menggunakna id
+                        SessionAkun.getCurrentAkun().setIdWarga(wargaId);
+                        //update akun di db
+                        UserPageService.insertIdWargaToAkun(wargaId, akun.getUsername());
+                        //nonaktifkan submit button
+                        submitBtn.setDisable(true);
+
+                    } catch (SQLException e) {
+                        System.out.println("Failed to connect to the database or execute the query." + e.getMessage());
+                    };
+
+                } catch (Exception e) {
+                    Alert alert2 = new Alert(Alert.AlertType.ERROR);
+                    alert2.setTitle("Error");
+                    alert2.setContentText("Mohon lengkapi semua data sebelum mengirim.");
+                    alert2.showAndWait();
+                }
+            } else {
+                System.out.println("User cancelled the operation.");
+            }
+        });
+
+
+    }
+
+    @FXML
     private void initialize() {
         akun = SessionAkun.getCurrentAkun();
         boxInitiator();
@@ -103,6 +163,28 @@ public class UserDashboardController {
             alert.setTitle("Information");
             alert.setContentText("Anda belum memasukkan data.");
             alert.show();
+
+            textFieldNama.textProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue.matches(".*\\d.*")) {
+                    textFieldNama.setText(oldValue);
+                    Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                    alert1.setTitle("Peringatan");
+                    alert1.setContentText("Nama tidak boleh mengandung angka!");
+                    alert1.showAndWait();
+                }
+            });
+
+            textFieldNIK.focusedProperty().addListener((observable, oldValue, newValue) -> {
+                if (!newValue) { // saat kehilangan fokus
+                    String input = textFieldNIK.getText();
+                    if(input.length() != 16 || !input.matches("\\d+")) {
+                        Alert alert1 = new Alert(Alert.AlertType.ERROR);
+                        alert1.setTitle("Error");
+                        alert1.setContentText("NIK harus terdiri dari 16 digit angka!");
+                        alert1.show();
+                        textFieldNIK.setText(""); // mengosongkan field jika NIK tidak valid
+                    }
+            }});
 
         } else{
             if (SessionWarga.getCurrentWarga() == null) {
@@ -151,4 +233,5 @@ public class UserDashboardController {
         submitBtn.setDisable(true);
     }
 }
+
 

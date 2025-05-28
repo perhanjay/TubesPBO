@@ -18,4 +18,12 @@ public enum JenisKelamin {
         return displayName;
     }
 
+    public static JenisKelamin getJenisKelamin(String displayName) {
+        for (JenisKelamin jenisKelamin : JenisKelamin.values()) {
+            if (jenisKelamin.displayName.equalsIgnoreCase(displayName)) {
+                return jenisKelamin;
+            }
+        }
+        throw new IllegalArgumentException("Jenis Kelamin not found: " + displayName);
+    }
 }

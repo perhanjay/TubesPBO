@@ -6,17 +6,13 @@ import com.myapp.demotubes.Entities.Properties.StatusKawin;
 import com.myapp.demotubes.Entities.Properties.StatusPekerjaan;
 import com.myapp.demotubes.Entities.Warga;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class UserPageService {
     static String urlDB = "jdbc:sqlite:src/main/resources/com/myapp/demotubes/db/kependudukan.db";
 
     public static Warga getWargaById(int idWarga){
         try{
-
             Connection conn = DriverManager.getConnection(urlDB);
             Statement stmt = conn.createStatement();
             String url = "Select * from warga where id_warga="+idWarga+";";
@@ -39,4 +35,40 @@ public class UserPageService {
         }
         return null;
     }
+
+    public static void insertWargaToDB(String nama, String jenisKelamin, String tanggalLahir, String tempatLahir, String alamat, String agama, String nik, String statusPekerjaan, String statusKawin) throws SQLException {
+        try(Connection conn = DriverManager.getConnection(urlDB)){
+        String sql = "INSERT INTO warga (nama, jenis_kelamin, tanggal_lahir, tempat_lahir, alamat_lengkap, agama, nik, status_pekerjaan, status_kawin) VALUES ('"+nama+"','"+jenisKelamin+"','"+tanggalLahir+"','"+tempatLahir+"','"+alamat+"','"+agama+"','"+nik+"','"+statusPekerjaan+"','"+statusKawin+"');";
+        Statement stmt = conn.createStatement();
+        stmt.executeUpdate(sql);
+    }catch (Exception e){
+        e.printStackTrace();
+        }
+    }
+
+    public static Integer getWargaId(String nik){
+        try(Connection conn = DriverManager.getConnection(urlDB)){
+            String sql = "SELECT * FROM warga WHERE nik='"+nik+"';";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if(rs.next()){
+                return rs.getInt("id_warga");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static void insertIdWargaToAkun(int idWarga, String username) throws SQLException {
+        try(Connection conn = DriverManager.getConnection(urlDB)){
+            String sql = "UPDATE akun SET id_warga = ? WHERE username = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, idWarga);
+            pstmt.setString(2, username);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

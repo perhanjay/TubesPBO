@@ -118,4 +118,4 @@ public class Warga {
         this.alamatLengkap = alamat;
     }
 
-}
+    }
