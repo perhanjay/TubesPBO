@@ -11,7 +11,7 @@
       <AnchorPane layoutY="-2.0" prefHeight="480.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
          <children>
             <ImageView fitHeight="74.0" fitWidth="77.0" layoutX="62.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="13.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/boxSelectUserDashboard.png" />
                </image>
