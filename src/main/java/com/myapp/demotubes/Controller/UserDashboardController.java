@@ -69,12 +69,29 @@ public class UserDashboardController {
     private ComboBox<StatusKawin> boxStatusKawin;
 
     @FXML
+    private Label ajukanDokumenLbl;
+
+    @FXML
     private void ajukanDokumenOnClick(){
+        if (akun.getIdWarga() == 0){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Informasi");
+            alert.setContentText("Anda belum memasukkan data diri. \nSilakan lengkapi data diri terlebih dahulu.");
+            alert.showAndWait();
+            return;
+        }
         SessionAkun.getCurrentAkun().viewLoader((Stage) rootAnchorPane.getScene().getWindow(), 2, "Permohonan Dokumen");
     }
 
     @FXML
     private void statusOnClick(){
+        if (akun.getIdWarga() == 0){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Informasi");
+            alert.setContentText("Anda belum memasukkan data diri. \nSilakan lengkapi data diri terlebih dahulu.");
+            alert.showAndWait();
+            return;
+        }
         SessionAkun.getCurrentAkun().viewLoader((Stage) rootAnchorPane.getScene().getWindow(), 3, "Status Permohonan");
     }
 
@@ -114,6 +131,7 @@ public class UserDashboardController {
                         UserPageService.insertIdWargaToAkun(wargaId, akun.getUsername());
                         //nonaktifkan submit button
                         submitBtn.setDisable(true);
+                        accountDisplayInitiator();
 
                     } catch (SQLException e) {
                         System.out.println("Failed to connect to the database or execute the query." + e.getMessage());
@@ -155,6 +173,7 @@ public class UserDashboardController {
             textFieldNIK.focusedProperty().addListener((observable, oldValue, newValue) -> {
                 if (!newValue) { // saat kehilangan fokus
                     String input = textFieldNIK.getText();
+
                     if(input.length() != 16 || !input.matches("\\d+")) {
                         Alert alert1 = new Alert(Alert.AlertType.ERROR);
                         alert1.setTitle("Error");

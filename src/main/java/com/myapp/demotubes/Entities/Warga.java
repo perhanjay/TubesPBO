@@ -3,6 +3,7 @@ package com.myapp.demotubes.Entities;
 import com.myapp.demotubes.Entities.Properties.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Warga {
     private int id;
@@ -15,6 +16,7 @@ public class Warga {
     private String nik;
     private StatusPekerjaan statusPekerjaan;
     private StatusKawin statusKawin;
+    private ArrayList<Pengajuan> daftarPengajuan;
 
     public Warga(int id, String name, JenisKelamin jenisKelamin, String tanggalLahir,String tempatLahir, String alamatLengkap, Agama agama, String nik, StatusPekerjaan statusPekerjaan, StatusKawin statusKawin) {
         this.id = id;

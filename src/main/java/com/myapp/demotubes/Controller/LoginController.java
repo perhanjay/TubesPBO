@@ -11,10 +11,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.SQLException;
-
 
 public class LoginController {
     @FXML
@@ -29,9 +27,9 @@ public class LoginController {
     @FXML
     private PasswordField passwordAgainField;
 
-
     @FXML
     private Label loginLabel;
+
     @FXML
     private TextField usernameField;
 
@@ -46,7 +44,6 @@ public class LoginController {
 
     @FXML
     private Label registerLabel;
-
 
     @FXML
     private AnchorPane loginPane;
@@ -84,11 +81,15 @@ public class LoginController {
             e.printStackTrace();
         }
 
-
         if(!(password.equals(passwordAgainField.getText()))) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Register Gagal");
             alert.setContentText("Password tidak sama.");
+            alert.showAndWait();
+        }else if (passwordRegisterField.getText() == "" || passwordAgainField.getText() == "") {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Register Gagal");
+            alert.setContentText("Password tidak boleh kosong.");
             alert.showAndWait();
         } else if (akun == null) {
             try{
@@ -121,6 +122,7 @@ public class LoginController {
             e.printStackTrace();
         }
     }
+
     @FXML
     private void registerPageLoader(){
         pageLoader("view/registerView.fxml", "Register");
@@ -151,5 +153,4 @@ public class LoginController {
         stage.centerOnScreen();
         stage.show();
     }
-
 }

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootAnchorPane" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: #F6F4F0;" stylesheets="@../Styles/userDashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myapp.demotubes.Controller.DocumentController.KeteranganDomisiliViewController">
+   <children>
+      <AnchorPane layoutY="-2.0" prefHeight="480.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="15.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/userEmptyProfilePict.jpg" />
+               </image></ImageView>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="13.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/boxSelectUserDashboard.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="13.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/boxSelectUserDashboard.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/boxSelectUserDashboard.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="52.0" layoutY="109.0" onMouseClicked="#userIsiBiodataOnClick" text="ISI BIODATA">
+               <font>
+                  <Font name="FreeSans" size="13.0" />
+               </font></Label>
+            <Label layoutX="50.0" layoutY="165.0" text="AJUKAN DOKUMEN">
+               <font>
+                  <Font name="FreeSans Bold" size="13.0" />
+               </font></Label>
+            <Label layoutX="52.0" layoutY="215.0" onMouseClicked="#statusOnClick" text="STATUS">
+               <font>
+                  <Font name="FreeSans" size="13.0" />
+               </font></Label>
+            <Label fx:id="usernameLabel" layoutX="74.0" layoutY="32.0" text="Username">
+               <font>
+                  <Font name="FreeSans Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="370.0" layoutY="45.0" text="Surat Keterangan Domisili">
+         <font>
+            <Font name="FreeSans Bold" size="13.0" />
+         </font></Label>
+      <Label layoutX="358.0" layoutY="13.0" text="PENGAJUAN DOKUMEN">
+         <font>
+            <Font name="FreeSans Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="kembaliBtn" layoutX="527.0" layoutY="404.0" mnemonicParsing="false" onAction="#kembaliBtnOnClick" text="Kembali" />
+      <Button fx:id="submitBtn" layoutX="623.0" layoutY="404.0" mnemonicParsing="false" text="Submit" />
+      <Button fx:id="unggahBerkasKTPMeninggalbtn" layoutX="424.0" layoutY="196.0" mnemonicParsing="false" text="Unggah Berkas" />
+      <Label layoutX="223.0" layoutY="86.0" text="Deskripsi Singkat Permohonan Pengajuan">
+         <font>
+            <Font name="FreeSans Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="223.0" layoutY="173.0" text="Upload Dokumen Pendukung">
+         <font>
+            <Font name="FreeSans Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="unggahBerkasKKMeninggalBtn" layoutX="425.0" layoutY="232.0" mnemonicParsing="false" text="Unggah Berkas" />
+      <Label layoutX="224.0" layoutY="200.0" text="KTP">
+         <font>
+            <Font name="FreeSans" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="224.0" layoutY="219.0" text="Kartu Keluarga">
+         <font>
+            <Font name="FreeSans" size="13.0" />
+         </font>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
+      </Label>
+      <Label layoutX="224.0" layoutY="246.0" text="Bukti Tinggal &#10;(Rekening air/listrik)">
+         <font>
+            <Font name="FreeSans" size="13.0" />
+         </font>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
+      </Label>
+      <Button fx:id="unggahBerkasSKKematianbtn" layoutX="425.0" layoutY="269.0" mnemonicParsing="false" text="Unggah Berkas" />
+      <TextArea fx:id="deskripsiSingkat" layoutX="222.0" layoutY="109.0" prefHeight="52.0" prefWidth="430.0" promptText="Alasan anda mengajukan permohonan dokumen ini, berikan konteks." />
+      <Label layoutX="224.0" layoutY="294.0" text="Form Permohonan">
+         <font>
+            <Font name="FreeSans" size="13.0" />
+         </font>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
+      </Label>
+      <Button fx:id="unggahBerkasKTPPelaporbtn" layoutX="425.0" layoutY="306.0" mnemonicParsing="false" text="Unggah Berkas" />
+   </children>
+</AnchorPane>

@@ -28,7 +28,6 @@ public class User extends Akun{
 
         try {
             FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource(url));
-            System.out.println(loader);
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);

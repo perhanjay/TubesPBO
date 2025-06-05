@@ -33,7 +33,7 @@
                <font>
                   <Font name="FreeSans Bold" size="13.0" />
                </font></Label>
-            <Label layoutX="50.0" layoutY="165.0" onMouseClicked="#ajukanDokumenOnClick" text="AJUKAN DOKUMEN">
+            <Label fx:id="ajukanDokumenLbl" layoutX="50.0" layoutY="165.0" onMouseClicked="#ajukanDokumenOnClick" text="AJUKAN DOKUMEN">
                <font>
                   <Font name="FreeSans" size="13.0" />
                </font></Label>
@@ -41,41 +41,41 @@
                <font>
                   <Font name="FreeSans" size="13.0" />
                </font></Label>
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="15.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/userEmptyProfilePict.jpg" />
                </image>
             </ImageView>
-            <Label fx:id="usernameLabel" layoutX="79.0" layoutY="25.0" text="Username">
+            <Label fx:id="usernameLabel" layoutX="74.0" layoutY="32.0" text="Username">
                <font>
                   <Font name="FreeSans Bold" size="13.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Label layoutX="344.0" layoutY="14.0" text="DATA PRIBADI">
+      <Label layoutX="344.0" layoutY="13.0" text="DATA PRIBADI">
          <font>
             <Font name="FreeSans Bold" size="16.0" />
          </font></Label>
       <TextField fx:id="textFieldNama" layoutX="345.0" layoutY="67.0" prefHeight="26.0" prefWidth="210.0" />
-      <Label layoutX="220.0" layoutY="71.0" text="Nama Lengkap">
+      <Label layoutX="222.0" layoutY="71.0" text="Nama Lengkap">
          <font>
             <Font name="FreeSans Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="218.0" layoutY="139.0" text="Jenis Kelamin">
+      <Label layoutX="223.0" layoutY="139.0" text="Jenis Kelamin">
          <font>
             <Font name="FreeSans Bold" size="13.0" />
          </font>
       </Label>
       <ComboBox fx:id="boxJenisKelamin" layoutX="344.0" layoutY="135.0" prefHeight="26.0" prefWidth="210.0" />
       <DatePicker fx:id="datePickerTglLahir" layoutX="345.0" layoutY="174.0" prefHeight="26.0" prefWidth="210.0" />
-      <Label layoutX="219.0" layoutY="178.0" text="Tanggal Lahir">
+      <Label layoutX="223.0" layoutY="178.0" text="Tanggal Lahir">
          <font>
             <Font name="FreeSans Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="220.0" layoutY="216.0" text="Tempat Lahir">
+      <Label layoutX="223.0" layoutY="216.0" text="Tempat Lahir">
          <font>
             <Font name="FreeSans Bold" size="13.0" />
          </font>
@@ -93,19 +93,19 @@
          </font>
       </Label>
       <ComboBox fx:id="boxAgama" layoutX="344.0" layoutY="287.0" prefHeight="26.0" prefWidth="210.0" />
-      <Label layoutX="217.0" layoutY="106.0" text="NIK">
+      <Label layoutX="222.0" layoutY="106.0" text="NIK">
          <font>
             <Font name="FreeSans Bold" size="13.0" />
          </font>
       </Label>
       <TextField fx:id="textFieldNIK" layoutX="345.0" layoutY="102.0" prefHeight="26.0" prefWidth="210.0" />
-      <Label layoutX="220.0" layoutY="332.0" text="Status Pekerjaan">
+      <Label layoutX="223.0" layoutY="332.0" text="Status Pekerjaan">
          <font>
             <Font name="FreeSans Bold" size="13.0" />
          </font>
       </Label>
       <ComboBox fx:id="boxStatusPekerjaan" layoutX="344.0" layoutY="328.0" prefHeight="26.0" prefWidth="210.0" />
-      <Label layoutX="220.0" layoutY="372.0" text="Status Kawin">
+      <Label layoutX="223.0" layoutY="372.0" text="Status Kawin">
          <font>
             <Font name="FreeSans Bold" size="13.0" />
          </font>
