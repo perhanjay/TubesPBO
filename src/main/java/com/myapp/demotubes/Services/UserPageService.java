@@ -12,8 +12,7 @@ public class UserPageService {
     static String urlDB = "jdbc:sqlite:src/main/resources/com/myapp/demotubes/db/kependudukan.db";
 
     public static Warga getWargaById(int idWarga){
-        try{
-            Connection conn = DriverManager.getConnection(urlDB);
+        try(Connection conn = DriverManager.getConnection(urlDB)){
             Statement stmt = conn.createStatement();
             String url = "Select * from warga where id_warga="+idWarga+";";
             ResultSet resultSet = stmt.executeQuery(url);
@@ -59,6 +58,7 @@ public class UserPageService {
         }
         return null;
     }
+
     public static void insertIdWargaToAkun(int idWarga, String username) throws SQLException {
         try(Connection conn = DriverManager.getConnection(urlDB)){
             String sql = "UPDATE akun SET id_warga = ? WHERE username = ?";

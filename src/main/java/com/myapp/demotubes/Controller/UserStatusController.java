@@ -1,12 +1,23 @@
 package com.myapp.demotubes.Controller;
 
+import com.myapp.demotubes.Entities.Dokumen;
+import com.myapp.demotubes.Entities.Pengajuan;
 import com.myapp.demotubes.Entities.Sessions.SessionAkun;
 import com.myapp.demotubes.HelloApplication;
+import com.myapp.demotubes.Services.PengajuanService;
+import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -16,6 +27,24 @@ public class UserStatusController {
 
     @FXML
     private AnchorPane rootAnchorPane;
+
+    @FXML
+    private Button hapusBtn;
+
+    @FXML
+    private TableView<Pengajuan> mainTable;
+
+    @FXML
+    TableColumn<Pengajuan, String> jenisDokumenCol;
+
+    @FXML
+    TableColumn<Pengajuan, String> tanggalDiajukanCol;
+
+    @FXML
+    TableColumn<Pengajuan, String> statusCol;
+
+    @FXML
+    TableColumn<Pengajuan, String> catatanAdminCol;
 
     @FXML
     private void ajukanDokumenOnClick(){
@@ -28,9 +57,36 @@ public class UserStatusController {
     }
 
     @FXML
+    private void hapusBtnOnClick(){
+        Pengajuan selectedPengajuan = mainTable.getSelectionModel().getSelectedItem();
+        if (selectedPengajuan != null) {
+            PengajuanService.deletePengajuan(selectedPengajuan.getId());
+            mainTable.getItems().remove(selectedPengajuan);
+            System.out.println("Pengajuan deleted: " + selectedPengajuan.getId());
+        } else {
+            System.out.println("No Pengajuan selected for deletion.");
+        }
+    }
+
+    @FXML
     private void initialize() {
         usernameLabel.setText(SessionAkun.getCurrentAkun().getUsername().toUpperCase());
         System.out.println("UserStatusController initialized");
+
+        ObservableList<Pengajuan> data = FXCollections.observableArrayList(PengajuanService.getPengajuanByIdAkunForUserView(SessionAkun.getCurrentAkun().getId()));
+
+        jenisDokumenCol.setCellValueFactory(cellData -> {
+            Dokumen dokumen = cellData.getValue().getDokumen();
+            return new SimpleStringProperty(dokumen.getNamaDokumen());
+        });
+
+        tanggalDiajukanCol.setCellValueFactory(new PropertyValueFactory<>("tanggalPengajuan"));
+        statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
+        catatanAdminCol.setCellValueFactory(new PropertyValueFactory<>("catatan"));
+
+        mainTable.setItems(data);
+//        mainTable.getColumns().addAll(jenisDokumenCol, tanggalDiajukanCol, statusCol, catatanAdminCol);
     }
+
 }
 

@@ -18,4 +18,6 @@ module com.myapp.demotubes {
     opens com.myapp.demotubes.Entities.Sessions to javafx.fxml;
     exports com.myapp.demotubes.Controller.DocumentController;
     opens com.myapp.demotubes.Controller.DocumentController to javafx.fxml;
+    exports com.myapp.demotubes.Controller.AdminController;
+    opens com.myapp.demotubes.Controller.AdminController to javafx.fxml;
 }

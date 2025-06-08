@@ -21,8 +21,8 @@ public class Admin extends Akun{
         String url;
         switch (index) {
             case 1 -> url = "view/adminDashboardView.fxml";
-            case 2 -> url = "view/adminUserListView.fxml";
-            case 3 -> url = "view/adminDocumentProcessView.fxml";
+            case 2 -> url = "view/adminPendudukView.fxml";
+            case 3 -> url = "view/adminDokumenView.fxml";
             default -> throw new IllegalArgumentException("Invalid index: " + index);
         }
 

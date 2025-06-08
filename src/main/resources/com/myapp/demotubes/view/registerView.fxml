@@ -9,32 +9,32 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="loginPane" fx:id="loginPane" maxHeight="575.0" maxWidth="791.0" prefHeight="521.0" prefWidth="791.0" stylesheets="@Styles/loginStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myapp.demotubes.Controller.LoginController">
+<AnchorPane id="loginPane" fx:id="loginPane" maxHeight="640.0" maxWidth="900.0" prefHeight="640.0" prefWidth="900.0" stylesheets="@Styles/loginStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myapp.demotubes.Controller.LoginController">
    <children>
-      <ImageView fitHeight="563.0" fitWidth="791.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="640.0" fitWidth="900.0" pickOnBounds="true">
          <image>
             <Image url="@img/backgrondLogin.png" />
          </image>
       </ImageView>
-      <AnchorPane id="containerBoxPane" layoutX="212.0" layoutY="73.0" minHeight="376.0" minWidth="366.0" prefHeight="376.0" prefWidth="366.0" AnchorPane.topAnchor="73.0">
+      <AnchorPane id="containerBoxPane" layoutX="267.0" layoutY="115.0" minHeight="376.0" minWidth="366.0" prefHeight="410.0" prefWidth="366.0" AnchorPane.topAnchor="115.0">
          <children>
-            <Button id="buttonRegister" fx:id="registerButton" layoutX="61.0" layoutY="283.0" mnemonicParsing="false" onAction="#buttonRegisterOnClick" prefHeight="35.0" prefWidth="242.0" stylesheets="@Styles/loginStyle.css" text="Register" textFill="WHITE" />
-            <TextField id="usernameTextField" fx:id="usernameRegisterField" layoutX="61.0" layoutY="152.0" prefHeight="35.0" prefWidth="242.0" promptText="Username" stylesheets="@Styles/loginStyle.css">
+            <Button id="buttonRegister" fx:id="registerButton" layoutX="60.0" layoutY="319.0" mnemonicParsing="false" onAction="#buttonRegisterOnClick" prefHeight="35.0" prefWidth="242.0" stylesheets="@Styles/loginStyle.css" text="Register" textFill="WHITE" />
+            <TextField id="usernameTextField" fx:id="usernameRegisterField" layoutX="61.0" layoutY="156.0" prefHeight="35.0" prefWidth="242.0" promptText="Username" stylesheets="@Styles/loginStyle.css">
                <font>
                   <Font name="0xProto Nerd Font Propo" size="13.0" />
                </font>
             </TextField>
-            <PasswordField id="passwordTextField" fx:id="passwordRegisterField" layoutX="61.0" layoutY="195.0" prefHeight="35.0" prefWidth="242.0" promptText="Password">
+            <PasswordField id="passwordTextField" fx:id="passwordRegisterField" layoutX="61.0" layoutY="205.0" prefHeight="35.0" prefWidth="242.0" promptText="Password">
                <font>
                   <Font name="0xProto Nerd Font Mono" size="13.0" />
                </font>
             </PasswordField>
-            <ImageView fitHeight="79.0" fitWidth="123.0" layoutX="144.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="79.0" fitWidth="123.0" layoutX="144.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/sipedesLogo.png" />
                </image>
             </ImageView>
-            <PasswordField id="passwordTextField" fx:id="passwordAgainField" layoutX="60.0" layoutY="237.0" prefHeight="35.0" prefWidth="242.0" promptText="Konfirmasi Password">
+            <PasswordField id="passwordTextField" fx:id="passwordAgainField" layoutX="61.0" layoutY="255.0" prefHeight="35.0" prefWidth="242.0" promptText="Konfirmasi Password">
                <font>
                   <Font name="0xProto Nerd Font Mono" size="13.0" />
                </font>
@@ -44,8 +44,8 @@
                   <Font name="0xProto Nerd Font Propo" size="13.0" />
                </font>
             </TextField>
-            <Label layoutX="61.0" layoutY="327.0" text="Kembali ke laman" />
-            <Label fx:id="loginLabel" layoutX="173.0" layoutY="327.0" onMouseClicked="#loginPageLoader" text="Login">
+            <Label layoutX="60.0" layoutY="363.0" text="Kembali ke laman" />
+            <Label fx:id="loginLabel" layoutX="172.0" layoutY="363.0" onMouseClicked="#loginPageLoader" text="Login">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootAnchorPane" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: #F6F4F0;" stylesheets="@Styles/userDashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myapp.demotubes.Controller.UserDashboardController">
+<AnchorPane fx:id="rootAnchorPane" prefHeight="640.0" prefWidth="900.0" style="-fx-background-color: #F6F4F0;" stylesheets="@Styles/userDashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myapp.demotubes.Controller.UserDashboardController">
    <children>
-      <AnchorPane fx:id="sideDashPane" layoutY="-2.0" prefHeight="480.0" prefWidth="199.0" style="-fx-background-color: #ffffff;">
+      <AnchorPane fx:id="sideDashPane" layoutY="-2.0" prefHeight="640.0" prefWidth="199.0" style="-fx-background-color: #ffffff;">
          <children>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="13.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -48,69 +48,72 @@
             </ImageView>
             <Label fx:id="usernameLabel" layoutX="74.0" layoutY="32.0" text="Username">
                <font>
-                  <Font name="FreeSans Bold" size="13.0" />
+                  <Font name="FreeSans Bold" size="14.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Label layoutX="344.0" layoutY="13.0" text="DATA PRIBADI">
+      <Label layoutX="435.0" layoutY="13.0" text="DATA PRIBADI">
          <font>
             <Font name="FreeSans Bold" size="16.0" />
          </font></Label>
-      <TextField fx:id="textFieldNama" layoutX="345.0" layoutY="67.0" prefHeight="26.0" prefWidth="210.0" />
+      <TextField fx:id="textFieldNama" layoutX="345.0" layoutY="67.0" prefHeight="26.0" prefWidth="300.0" />
       <Label layoutX="222.0" layoutY="71.0" text="Nama Lengkap">
          <font>
             <Font name="FreeSans Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="223.0" layoutY="139.0" text="Jenis Kelamin">
+      <Label layoutX="222.0" layoutY="156.0" text="Jenis Kelamin">
          <font>
             <Font name="FreeSans Bold" size="13.0" />
          </font>
       </Label>
-      <ComboBox fx:id="boxJenisKelamin" layoutX="344.0" layoutY="135.0" prefHeight="26.0" prefWidth="210.0" />
-      <DatePicker fx:id="datePickerTglLahir" layoutX="345.0" layoutY="174.0" prefHeight="26.0" prefWidth="210.0" />
-      <Label layoutX="223.0" layoutY="178.0" text="Tanggal Lahir">
+      <ComboBox fx:id="boxJenisKelamin" layoutX="344.0" layoutY="155.0" prefHeight="26.0" prefWidth="300.0" />
+      <DatePicker fx:id="datePickerTglLahir" layoutX="345.0" layoutY="204.0" prefHeight="26.0" prefWidth="300.0" />
+      <Label layoutX="222.0" layoutY="208.0" text="Tanggal Lahir">
          <font>
             <Font name="FreeSans Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="223.0" layoutY="216.0" text="Tempat Lahir">
+      <Label layoutX="222.0" layoutY="256.0" text="Tempat Lahir">
          <font>
             <Font name="FreeSans Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="textFieldTempatLahir" layoutX="345.0" layoutY="212.0" prefHeight="26.0" prefWidth="210.0" />
-      <Label layoutX="223.0" layoutY="251.0" text="Alamat Lengkap">
+      <TextField fx:id="textFieldTempatLahir" layoutX="345.0" layoutY="252.0" prefHeight="26.0" prefWidth="300.0" />
+      <Label layoutX="222.0" layoutY="301.0" text="Alamat Lengkap">
          <font>
             <Font name="FreeSans Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="textFieldAlamatLengkap" layoutX="344.0" layoutY="247.0" prefHeight="26.0" prefWidth="210.0" />
-      <Label layoutX="223.0" layoutY="291.0" text="Agama">
+      <TextField fx:id="textFieldAlamatLengkap" layoutX="344.0" layoutY="297.0" prefHeight="26.0" prefWidth="300.0" />
+      <Label layoutX="222.0" layoutY="351.0" text="Agama">
          <font>
             <Font name="FreeSans Bold" size="13.0" />
          </font>
       </Label>
-      <ComboBox fx:id="boxAgama" layoutX="344.0" layoutY="287.0" prefHeight="26.0" prefWidth="210.0" />
-      <Label layoutX="222.0" layoutY="106.0" text="NIK">
+      <ComboBox fx:id="boxAgama" layoutX="344.0" layoutY="347.0" prefHeight="26.0" prefWidth="300.0" />
+      <Label layoutX="222.0" layoutY="116.0" text="NIK">
          <font>
             <Font name="FreeSans Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="textFieldNIK" layoutX="345.0" layoutY="102.0" prefHeight="26.0" prefWidth="210.0" />
-      <Label layoutX="223.0" layoutY="332.0" text="Status Pekerjaan">
+      <TextField fx:id="textFieldNIK" layoutX="345.0" layoutY="112.0" prefHeight="26.0" prefWidth="300.0" />
+      <Label layoutX="222.0" layoutY="402.0" text="Status Pekerjaan">
          <font>
             <Font name="FreeSans Bold" size="13.0" />
          </font>
       </Label>
-      <ComboBox fx:id="boxStatusPekerjaan" layoutX="344.0" layoutY="328.0" prefHeight="26.0" prefWidth="210.0" />
-      <Label layoutX="223.0" layoutY="372.0" text="Status Kawin">
+      <ComboBox fx:id="boxStatusPekerjaan" layoutX="344.0" layoutY="398.0" prefHeight="26.0" prefWidth="300.0" />
+      <Label layoutX="222.0" layoutY="452.0" text="Status Kawin">
          <font>
             <Font name="FreeSans Bold" size="13.0" />
          </font>
       </Label>
-      <ComboBox fx:id="boxStatusKawin" layoutX="344.0" layoutY="368.0" prefHeight="26.0" prefWidth="210.0" />
-      <Button fx:id="submitBtn" layoutX="595.0" layoutY="417.0" mnemonicParsing="false" onAction="#submitButtonOnClick" prefHeight="37.0" prefWidth="102.0" text="SUBMIT" />
+      <ComboBox fx:id="boxStatusKawin" layoutX="344.0" layoutY="448.0" prefHeight="26.0" prefWidth="300.0" />
+      <Button fx:id="submitBtn" layoutX="758.0" layoutY="569.0" mnemonicParsing="false" onAction="#submitButtonOnClick" prefHeight="37.0" prefWidth="102.0" text="SUBMIT">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>

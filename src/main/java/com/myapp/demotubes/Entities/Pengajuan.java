@@ -6,14 +6,29 @@ public class Pengajuan {
     private Dokumen dokumen;
     private String deskripsiPengajuan;
     private String tanggalPengajuan;
+    private String status;
     private String catatan;
 
-    public String getStatusPengajuan() {
-        return statusPengajuan;
+    public Pengajuan(Warga pemohon, Dokumen dokumen) {
+        this.pemohon = pemohon;
+        this.dokumen = dokumen;
     }
 
-    public void setStatusPengajuan(String statusPengajuan) {
-        this.statusPengajuan = statusPengajuan;
+    public Pengajuan(int idPengajuan, Warga pemohon, Dokumen dokumen, String tanggalPengajuan, String status, String catatan) {
+        this.id = idPengajuan;
+        this.pemohon = pemohon;
+        this.dokumen = dokumen;
+        this.tanggalPengajuan = tanggalPengajuan;
+        this.status = status;
+        this.catatan = catatan;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getCatatan() {
@@ -50,10 +65,7 @@ public class Pengajuan {
 
     private String statusPengajuan;
 
-    public Pengajuan(Warga pemohon, Dokumen dokumen) {
-        this.pemohon = pemohon;
-        this.dokumen = dokumen;
-    }
+
 
     public Warga getPemohon() {
         return pemohon;

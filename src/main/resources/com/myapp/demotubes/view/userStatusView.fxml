@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootAnchorPane" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: #F6F4F0;" stylesheets="@Styles/userDashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myapp.demotubes.Controller.UserStatusController">
+<AnchorPane fx:id="rootAnchorPane" prefHeight="640.0" prefWidth="900.0" style="-fx-background-color: #F6F4F0;" stylesheets="@Styles/userDashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myapp.demotubes.Controller.UserStatusController">
    <children>
-      <AnchorPane layoutY="-2.0" prefHeight="480.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+      <AnchorPane layoutY="-2.0" prefHeight="640.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
          <children>
             <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="15.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -43,11 +46,23 @@
                </font></Label>
             <Label fx:id="usernameLabel" layoutX="74.0" layoutY="32.0" text="Username">
                <font>
-                  <Font name="FreeSans Bold" size="13.0" />
+                  <Font name="FreeSans Bold" size="14.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Label layoutX="368.0" layoutY="73.0" text="Status" />
+      <Label layoutX="435.0" layoutY="13.0" text="STATUS PERMOHONAN">
+         <font>
+            <Font name="FreeSans Bold" size="16.0" />
+         </font></Label>
+      <TableView fx:id="mainTable" layoutX="200.0" layoutY="80.0" prefHeight="560.0" prefWidth="698.0">
+        <columns>
+          <TableColumn fx:id="jenisDokumenCol" prefWidth="144.0" text="Jenis Dokumen" />
+          <TableColumn fx:id="tanggalDiajukanCol" minWidth="6.4000244140625" prefWidth="130.4000244140625" text="Tanggal Diajukan" />
+            <TableColumn fx:id="statusCol" editable="false" minWidth="6.4000244140625" prefWidth="143.20004272460938" resizable="false" text="Status" />
+            <TableColumn fx:id="catatanAdminCol" minWidth="6.4000244140625" prefWidth="280.79998779296875" text="Catatan Admin" />
+        </columns>
+      </TableView>
+      <Button fx:id="hapusBtn" layoutX="745.0" layoutY="35.0" mnemonicParsing="false" onAction="#hapusBtnOnClick" text="Hapus Permohonan" />
    </children>
 </AnchorPane>

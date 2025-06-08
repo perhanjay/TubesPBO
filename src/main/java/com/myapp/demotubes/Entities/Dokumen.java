@@ -5,11 +5,10 @@ public class Dokumen {
     private String namaDokumen;
     private String deskripsi;
 
-    public Dokumen(int id, String namaDokumen, String deskripsi, boolean aktif) {
+    public Dokumen(int id, String namaDokumen, String deskripsi) {
         this.id = id;
         this.namaDokumen = namaDokumen;
         this.deskripsi = deskripsi;
-        this.aktif = aktif;
     }
 
     public int getId() {
