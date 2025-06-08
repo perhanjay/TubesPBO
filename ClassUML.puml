@@ -1,0 +1,55 @@
+@startuml
+package Services {
+    class statsService {
+        +getTotalWarga(): int
+        +getTotalPengajuan(): int
+        +getTotalPengajuanMenungguProses(): int
+        +getTotalPengajuanHariIni(): int
+        +getTotalPengajuanBulanIni(): int
+        +getJumlahWargaByJenisKelamin(): Map<String, Integer>
+        +getJumlahWargaByPekerjaan(): Map<String, Integer>
+        +getJumlahWargaByKelompokUmur(): Map<String, Integer>
+        +getPengajuanHarianBulanIni(): int[]
+        +getJumlahPengajuanByJenisDokumen(): Map<Integer, Integer>
+    }
+}
+
+package Controller {
+    class AdminDahsboardController {
+        -statsService: statsService
+        +initialize(): void
+        +updateDashboard(): void
+        +handlePengajuanDokumen(): void
+    }
+}
+
+package Entities {
+    class Pengajuan {
+        -idPengajuan: int
+        -warga: Warga
+        -dokumen: Dokumen
+        -tanggalPengajuan: Date
+        -status: String
+        -catatanAdmin: String
+        +getStatus(): String
+    }
+    class Warga {
+        -id: int
+        -nama: String
+        -jenisKelamin: String
+        -statusPekerjaan: String
+        -tanggalLahir: Date
+        -aktif: boolean
+    }
+    class Dokumen {
+        -idDokumen: int
+        -namaDokumen: String
+    }
+}
+
+JavaFXController ..> statsService : uses
+JavaFXController ..> Pengajuan : displays
+Pengajuan o-- Warga
+Pengajuan o-- Dokumen
+
+@enduml

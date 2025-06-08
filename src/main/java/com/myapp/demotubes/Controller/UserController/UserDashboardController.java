@@ -1,4 +1,4 @@
-package com.myapp.demotubes.Controller;
+package com.myapp.demotubes.Controller.UserController;
 
 import com.myapp.demotubes.Entities.Akun;
 import com.myapp.demotubes.Entities.Properties.Agama;
@@ -8,21 +8,14 @@ import com.myapp.demotubes.Entities.Properties.StatusPekerjaan;
 import com.myapp.demotubes.Entities.Sessions.SessionAkun;
 import com.myapp.demotubes.Entities.Sessions.SessionWarga;
 import com.myapp.demotubes.Entities.Warga;
-import com.myapp.demotubes.HelloApplication;
 import com.myapp.demotubes.Services.UserPageService;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 

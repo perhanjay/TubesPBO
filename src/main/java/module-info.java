@@ -20,4 +20,6 @@ module com.myapp.demotubes {
     opens com.myapp.demotubes.Controller.DocumentController to javafx.fxml;
     exports com.myapp.demotubes.Controller.AdminController;
     opens com.myapp.demotubes.Controller.AdminController to javafx.fxml;
+    exports com.myapp.demotubes.Controller.UserController;
+    opens com.myapp.demotubes.Controller.UserController to javafx.fxml;
 }

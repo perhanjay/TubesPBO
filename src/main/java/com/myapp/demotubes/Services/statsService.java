@@ -8,89 +8,70 @@ import java.util.Map;
 public class statsService {
     static String urlDB = "jdbc:sqlite:src/main/resources/com/myapp/demotubes/db/kependudukan.db";
 
-    public static int getTotalWarga(){
-        String sql = "SELECT COUNT(*) FROM warga";
-        try (Connection conn = DriverManager.getConnection(urlDB);
+    private static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(urlDB);
+    };
+
+    private static int getCount(String sql) {
+        try (Connection conn = getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
-            if (rs.next()){
-                return rs.getInt(1);
-            };
+
+            if (rs.next()) return rs.getInt(1);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public static int getTotalWarga(){
+        return getCount("SELECT COUNT(*) FROM warga");
     }
 
     public static int getTotalPengajuan() {
-        String sql = "SELECT COUNT(*) AS total FROM pengajuan_dokumen";
-        try (Connection conn = DriverManager.getConnection(urlDB);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-
-            if (rs.next()) {
-                return rs.getInt("total");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return 0;
+        return getCount("SELECT COUNT(*) FROM pengajuan_dokumen");
     }
 
     public static int getTotalPengajuanMenungguProses() {
-        String sql = "SELECT COUNT(*) AS total FROM pengajuan_dokumen WHERE status = 'Diajukan'";
-        try (Connection conn = DriverManager.getConnection(urlDB);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-
-            if (rs.next()) {
-                return rs.getInt("total");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return 0;
+        return getCount("SELECT COUNT(*) FROM pengajuan_dokumen WHERE status = 'DIAJUKAN'");
     }
 
     public static int getTotalPengajuanHariIni() {
-        String sql = "SELECT COUNT(*) AS total FROM pengajuan_dokumen WHERE DATE(tanggal_pengajuan) = DATE('now')";
-        try (Connection conn = DriverManager.getConnection(urlDB);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-
-            if (rs.next()) {
-                return rs.getInt("total");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return 0;
+        return getCount("SELECT COUNT(*) FROM pengajuan_dokumen WHERE DATE(tanggal_pengajuan) = DATE('now')");
     }
 
     public static int getTotalPengajuanBulanIni() {
-        String sql = """
-        SELECT COUNT(*) AS total 
-        FROM pengajuan_dokumen 
-        WHERE strftime('%Y-%m', tanggal_pengajuan) = strftime('%Y-%m', 'now')
-    """;
-        try (Connection conn = DriverManager.getConnection(urlDB);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-
-            if (rs.next()) {
-                return rs.getInt("total");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return 0;
+        return getCount("""
+            SELECT COUNT(*) FROM pengajuan_dokumen
+            WHERE strftime('%Y-%m', tanggal_pengajuan) = strftime('%Y-%m', 'now')
+        """);
     }
+
+//    public static int getTotalPengajuanSKKelahiran() {
+//        return getCount("SELECT COUNT(*) FROM pengajuan_dokumen WHERE id_dokumen = 1");
+//
+//    }
+//    public static int getTotalPengajuanSKKematian() {
+//        return getCount("SELECT COUNT(*) FROM pengajuan_dokumen WHERE id_dokumen = 2");
+//    }
+//
+//    public static int getTotalPengajuanSKU() {
+//        return getCount("SELECT COUNT(*) FROM pengajuan_dokumen WHERE id_dokumen = 3");
+//    }
+//
+//    public static int getTotalPengajuanSKTM() {
+//        return getCount("SELECT COUNT(*) FROM pengajuan_dokumen WHERE id_dokumen = 4");
+//    }
+//
+//    public static int getTotalPengajuanSKDomisili() {
+//        return getCount("SELECT COUNT(*) FROM pengajuan_dokumen WHERE id_dokumen = 5");
+//    }
 
     public static Map<String, Integer> getJumlahWargaByJenisKelamin() {
         Map<String, Integer> dataMap = new HashMap<>();
         String sql = "SELECT jenis_kelamin, COUNT(*) as jumlah FROM warga GROUP BY jenis_kelamin";
 
-        try (Connection conn = DriverManager.getConnection(urlDB);
+        try (Connection conn = getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
@@ -112,9 +93,9 @@ public class statsService {
                 "WHERE aktif = 1 " +
                 "GROUP BY status_pekerjaan";
 
-        try (Connection conn = DriverManager.getConnection(urlDB);){
+        try (Connection conn = getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();){
 
             while (rs.next()) {
                 String pekerjaan = rs.getString("status_pekerjaan");
@@ -149,7 +130,7 @@ public class statsService {
 
         Map<String, Integer> hasil = new HashMap<>();
 
-        try (Connection conn = DriverManager.getConnection(urlDB);
+        try (Connection conn = getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
@@ -178,9 +159,9 @@ public class statsService {
                             GROUP BY hari
         """;
 
-        try (Connection conn = DriverManager.getConnection(urlDB);){
+        try (Connection conn = getConnection();
             PreparedStatement stmt = conn.prepareStatement(query);
-            ResultSet rs = stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();){
             while (rs.next()) {
                 int hari = rs.getInt("hari");
                 int jumlah = rs.getInt("jumlah");
@@ -190,8 +171,22 @@ public class statsService {
 
         return data;
     }
+    public static Map<Integer, Integer> getJumlahPengajuanByJenisDokumen() {
+        Map<Integer, Integer> dataMap = new HashMap<>();
+        String sql = "SELECT id_dokumen, COUNT(*) as jumlah FROM pengajuan_dokumen GROUP BY id_dokumen";
 
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
 
-    public static void main(String[] args) {
+            while (rs.next()) {
+                int idDokumen = rs.getInt("id_dokumen");
+                int jumlah = rs.getInt("jumlah");
+                dataMap.put(idDokumen, jumlah);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dataMap;
     }
 }

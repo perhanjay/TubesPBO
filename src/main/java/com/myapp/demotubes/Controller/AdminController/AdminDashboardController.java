@@ -15,8 +15,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import com.myapp.demotubes.Services.statsService;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Map;
 
@@ -99,6 +101,22 @@ public class AdminDashboardController {
     @FXML
     private Label cewek;
 
+    @FXML
+    private Label totalSKDomisili;
+
+    @FXML
+    private Label totalSKTM;
+
+    @FXML
+    private Label totalSKU;
+
+    @FXML
+    private Label totalSKKM;
+
+    @FXML
+    private Label totalSKKL;
+
+
 
     @FXML
     private void pendudukBtnOnClick() {
@@ -151,16 +169,16 @@ public class AdminDashboardController {
         permohonanBulanIni.setText(paddingAdder(permohonanBulanIniCount));
 
         // Initialize PieChart with data
-        Map<String, Integer> dataMap = statsService.getJumlahWargaByJenisKelamin();
+        Map<String, Integer> dataWargaKelamin = statsService.getJumlahWargaByJenisKelamin();
         pieChartJenisKelamin.getData().clear();
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
 
-        for (Map.Entry<String, Integer> entry : dataMap.entrySet()) {
+        for (Map.Entry<String, Integer> entry : dataWargaKelamin.entrySet()) {
             pieChartData.add(new PieChart.Data(entry.getKey(), entry.getValue()));
         }
 
-        lakik.setText(paddingAdder(dataMap.getOrDefault("LAKI_LAKI", 0)));
-        cewek.setText(paddingAdder(dataMap.getOrDefault("PEREMPUAN", 0)));
+        lakik.setText(paddingAdder(dataWargaKelamin.getOrDefault("LAKI_LAKI", 0)));
+        cewek.setText(paddingAdder(dataWargaKelamin.getOrDefault("PEREMPUAN", 0)));
 
         pieChartJenisKelamin.setData(pieChartData);
 
@@ -171,11 +189,19 @@ public class AdminDashboardController {
         wargaPelajar.setText(paddingAdder(dataPekerjaan.getOrDefault("PELAJAR", 0)));
         wargaMenganggur.setText(paddingAdder(dataPekerjaan.getOrDefault("TIDAK_BEKERJA", 0)));
 
-        Map<String, Integer> data = statsService.getJumlahWargaByKelompokUmur();
-        wargaAnak.setText(paddingAdder(data.getOrDefault("Anak", 0)));
-        wargaRemaja.setText(paddingAdder(data.getOrDefault("Remaja", 0)));
-        wargaDewasa.setText(paddingAdder(data.getOrDefault("Dewasa", 0)));
-        wargaLansia.setText(paddingAdder(data.getOrDefault("Lansia", 0)));
+        Map<String, Integer> dataWargaUmur = statsService.getJumlahWargaByKelompokUmur();
+        wargaAnak.setText(paddingAdder(dataWargaUmur.getOrDefault("Anak", 0)));
+        wargaRemaja.setText(paddingAdder(dataWargaUmur.getOrDefault("Remaja", 0)));
+        wargaDewasa.setText(paddingAdder(dataWargaUmur.getOrDefault("Dewasa", 0)));
+        wargaLansia.setText(paddingAdder(dataWargaUmur.getOrDefault("Lansia", 0)));
+
+
+        Map<Integer, Integer> dataDokumenByPengajuan = statsService.getJumlahPengajuanByJenisDokumen();
+        totalSKDomisili.setText(paddingAdder(dataDokumenByPengajuan.getOrDefault(5, 0)));
+        totalSKTM.setText(paddingAdder(dataDokumenByPengajuan.getOrDefault(4, 0)));
+        totalSKU.setText(paddingAdder(dataDokumenByPengajuan.getOrDefault(3, 0)));
+        totalSKKM.setText(paddingAdder(dataDokumenByPengajuan.getOrDefault(2, 0)));
+        totalSKKL.setText(paddingAdder(dataDokumenByPengajuan.getOrDefault(1, 0)));
 
         muatDataStatistik();
 
@@ -184,6 +210,7 @@ public class AdminDashboardController {
     private void muatDataStatistik() {
         int maxHari = LocalDate.now().lengthOfMonth();
         xAxis.getCategories().clear();
+        lineChart.getData().clear();
         for (int i = 1; i <= maxHari; i++) {
             xAxis.getCategories().add(String.valueOf(i));
         }
@@ -197,7 +224,8 @@ public class AdminDashboardController {
                 series.getData().add(new XYChart.Data<>(String.valueOf(i), data[i]));
             }
 
-            lineChart.getData().clear();
+            xAxis.setLabel("Tanggal dalam bulan ini");
+            yAxis.setLabel("Jumlah Permohonan");
             lineChart.getData().add(series);
 
         } catch (Exception e) {
@@ -211,5 +239,31 @@ public class AdminDashboardController {
     }
 
 
+
+
+
+
+
+
+
+
+
+    @FXML
+    private Button jokesBtn;
+
+    public void jokesBtnOnAction(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/myapp/demotubes/view/img/iAmGojo.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Ferhan adalah Gojo");
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

@@ -1,11 +1,9 @@
-package com.myapp.demotubes.Controller;
+package com.myapp.demotubes.Controller.UserController;
 
 import com.myapp.demotubes.Entities.Properties.JenisDokumen;
-import com.myapp.demotubes.Entities.Properties.JenisKelamin;
 import com.myapp.demotubes.Entities.Sessions.SessionAkun;
 import com.myapp.demotubes.HelloApplication;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

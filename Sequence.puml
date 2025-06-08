@@ -1,0 +1,23 @@
+@startuml
+autonumber
+
+actor User
+participant "JavaFX Controller" as Controller
+participant "statsService" as Service
+database "Database" as DB
+
+User -> Controller: Interact with UI (e.g., open dashboard)
+Controller -> Service: getTotalPengajuan()
+Service -> DB: SELECT COUNT(*) FROM pengajuan_dokumen
+DB --> Service: Result (count)
+Service --> Controller: Return count
+Controller --> User: Display total pengajuan
+
+User -> Controller: Request pengajuan by document type
+Controller -> Service: getJumlahPengajuanByJenisDokumen()
+Service -> DB: SELECT id_dokumen, COUNT(*) FROM pengajuan_dokumen GROUP BY id_dokumen
+DB --> Service: Result (map)
+Service --> Controller: Return map
+Controller --> User: Display data
+
+@enduml

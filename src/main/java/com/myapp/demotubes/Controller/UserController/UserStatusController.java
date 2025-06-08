@@ -1,18 +1,13 @@
-package com.myapp.demotubes.Controller;
+package com.myapp.demotubes.Controller.UserController;
 
 import com.myapp.demotubes.Entities.Dokumen;
 import com.myapp.demotubes.Entities.Pengajuan;
 import com.myapp.demotubes.Entities.Sessions.SessionAkun;
-import com.myapp.demotubes.HelloApplication;
 import com.myapp.demotubes.Services.PengajuanService;
-import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;

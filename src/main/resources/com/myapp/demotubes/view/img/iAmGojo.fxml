@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="803.0" prefWidth="561.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myapp.demotubes.Controller.AdminController.IAmGojo">
+   <children>
+      <ImageView fitHeight="797.0" fitWidth="557.0" layoutX="3.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@gojokuotes.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

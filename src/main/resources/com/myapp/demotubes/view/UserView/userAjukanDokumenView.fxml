@@ -8,27 +8,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootAnchorPaneDokumen" prefHeight="640.0" prefWidth="900.0" style="-fx-background-color: #F6F4F0;" stylesheets="@Styles/userDashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myapp.demotubes.Controller.UserAjukanDokumenController">
+<AnchorPane fx:id="rootAnchorPaneDokumen" prefHeight="640.0" prefWidth="900.0" style="-fx-background-color: #F6F4F0;" stylesheets="@../Styles/userDashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myapp.demotubes.Controller.UserController.UserAjukanDokumenController">
    <children>
       <AnchorPane layoutY="-2.0" prefHeight="640.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
          <children>
             <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="15.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/userEmptyProfilePict.jpg" />
+                  <Image url="@../img/userEmptyProfilePict.jpg" />
                </image></ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="13.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/boxSelectUserDashboard.png" />
+                  <Image url="@../img/boxSelectUserDashboard.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="13.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/boxSelectUserDashboard.png" />
+                  <Image url="@../img/boxSelectUserDashboard.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/boxSelectUserDashboard.png" />
+                  <Image url="@../img/boxSelectUserDashboard.png" />
                </image>
             </ImageView>
             <Label layoutX="52.0" layoutY="109.0" onMouseClicked="#userIsiBiodataOnClick" text="ISI BIODATA">

@@ -20,9 +20,9 @@ public class Admin extends Akun{
     public void viewLoader(Stage stage, int index, String title) {
         String url;
         switch (index) {
-            case 1 -> url = "view/adminDashboardView.fxml";
-            case 2 -> url = "view/adminPendudukView.fxml";
-            case 3 -> url = "view/adminDokumenView.fxml";
+            case 1 -> url = "view/AdminView/adminDashboardView.fxml";
+            case 2 -> url = "view/AdminView/adminPendudukView.fxml";
+            case 3 -> url = "view/AdminView/adminDokumenView.fxml";
             default -> throw new IllegalArgumentException("Invalid index: " + index);
         }
 
