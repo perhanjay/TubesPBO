@@ -4,5 +4,5 @@ public enum Status {
     DIAJUKAN,
     DIPROSES,
     DISETUJUI,
-    DITOLAK;
+    DITOLAK
 }
