@@ -7,12 +7,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class User extends Akun{
-    public User(int id, String username, String password, Roles role) {
+public class Pengguna extends Akun{
+    public Pengguna(int id, String username, String password, Roles role) {
         super(id, username, password, role);
     }
 
-    public User(int id, String username, String password, Roles role, int id_warga) {
+    public Pengguna(int id, String username, String password, Roles role, int id_warga) {
         super(id, username, password, role, id_warga);
     }
 
@@ -20,9 +20,9 @@ public class User extends Akun{
     public void viewLoader(Stage stage, int index, String title) {
         String url;
         switch (index) {
-            case 1 -> url = "view/userDashboardView.fxml";
-            case 2 -> url = "view/userAjukanDokumenView.fxml";
-            case 3 -> url = "view/userStatusView.fxml";
+            case 1 -> url = "view/UserView/userDashboardView.fxml";
+            case 2 -> url = "view/UserView/userAjukanDokumenView.fxml";
+            case 3 -> url = "view/UserView/userStatusView.fxml";
             default -> throw new IllegalArgumentException("Invalid index: " + index);
         }
 

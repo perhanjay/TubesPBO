@@ -128,6 +128,9 @@ public class UserDashboardController {
 
                     } catch (SQLException e) {
                         System.out.println("Failed to connect to the database or execute the query." + e.getMessage());
+                        Alert alert1 = new Alert(Alert.AlertType.ERROR);
+                        alert1.setTitle("Error");
+                        alert1.setContentText("Gagal mengirim data. \nPerhatikan kembali data yang anda masukkan.");
                     };
 
                 } catch (Exception e) {
@@ -137,7 +140,7 @@ public class UserDashboardController {
                     alert2.showAndWait();
                 }
             } else {
-                System.out.println("User cancelled the operation.");
+                System.out.println("Pengguna cancelled the operation.");
             }
         });
     }
@@ -195,7 +198,7 @@ public class UserDashboardController {
     }
 
     private void accountDisplayInitiator(){
-        textFieldNama.setText(SessionWarga.getCurrentWarga().getName());
+        textFieldNama.setText(SessionWarga.getCurrentWarga().getNama());
         textFieldNama.setEditable(false);
         textFieldNIK.setText(SessionWarga.getCurrentWarga().getNik());
         textFieldNIK.setEditable(false);

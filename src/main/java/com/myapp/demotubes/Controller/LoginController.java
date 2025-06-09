@@ -149,7 +149,7 @@ public class LoginController {
         Parent root = loader.load();
         Stage stage = (Stage) loginPane.getScene().getWindow();
         stage.setScene(new Scene(root));
-        stage.setTitle("User");
+        stage.setTitle("Pengguna");
         stage.centerOnScreen();
         stage.show();
     }

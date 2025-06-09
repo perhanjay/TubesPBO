@@ -11,6 +11,9 @@ public class Dokumen {
         this.deskripsi = deskripsi;
     }
 
+    public Dokumen() {
+    }
+
     public int getId() {
         return id;
     }

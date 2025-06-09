@@ -2,12 +2,11 @@ package com.myapp.demotubes.Entities;
 
 import com.myapp.demotubes.Entities.Properties.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Warga {
     private int id;
-    private String name;
+    private String nama;
     private JenisKelamin jenisKelamin;
     private String tanggalLahir;
     private String tempatLahir;
@@ -16,11 +15,11 @@ public class Warga {
     private String nik;
     private StatusPekerjaan statusPekerjaan;
     private StatusKawin statusKawin;
-    private ArrayList<Pengajuan> daftarPengajuan;
+    private ArrayList<PengajuanDokumen> daftarPengajuanDokumen;
 
     public Warga(int id, String name, JenisKelamin jenisKelamin, String tanggalLahir,String tempatLahir, String alamatLengkap, Agama agama, String nik, StatusPekerjaan statusPekerjaan, StatusKawin statusKawin) {
         this.id = id;
-        this.name = name;
+        this.nama = name;
         this.jenisKelamin = jenisKelamin;
         this.tanggalLahir = tanggalLahir;
         this.tempatLahir = tempatLahir;
@@ -31,6 +30,10 @@ public class Warga {
         this.statusKawin = statusKawin;
     }
 
+    public Warga(){
+
+    }
+
     public int getId() {
         return id;
     }
@@ -39,12 +42,12 @@ public class Warga {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNama() {
+        return nama;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNama(String name) {
+        this.nama = name;
     }
 
     public JenisKelamin getJenisKelamin() {

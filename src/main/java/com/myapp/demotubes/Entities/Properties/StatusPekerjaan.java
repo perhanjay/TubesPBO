@@ -20,7 +20,8 @@ public enum StatusPekerjaan {
 
     public static StatusPekerjaan getStatusPekerjaan(String statusPekerjaan) {
         for (StatusPekerjaan sp : StatusPekerjaan.values()) {
-            if (sp.statusPekerjaan.equalsIgnoreCase(statusPekerjaan)) {
+            if (sp.statusPekerjaan.equalsIgnoreCase(statusPekerjaan) ||
+            sp.name().equalsIgnoreCase(statusPekerjaan)) {
                 return sp;
             }
         }

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootAnchorPane" prefHeight="640.0" prefWidth="546.0" style="-fx-background-color: #F6F4F0;" stylesheets="@../Styles/userDashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myapp.demotubes.Controller.AdminController.AdminPendudukContinueController">
+   <children>
+      <Label layoutX="190.0" layoutY="22.0" text="DATA PRIBADI WARGA">
+         <font>
+            <Font name="FreeSans Bold" size="16.0" />
+         </font></Label>
+      <TextField fx:id="textFieldNama" layoutX="175.0" layoutY="80.0" prefHeight="26.0" prefWidth="300.0" />
+      <Label layoutX="52.0" layoutY="84.0" text="Nama Lengkap">
+         <font>
+            <Font name="FreeSans Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="52.0" layoutY="169.0" text="Jenis Kelamin">
+         <font>
+            <Font name="FreeSans Bold" size="13.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="boxJenisKelamin" layoutX="174.0" layoutY="168.0" prefHeight="26.0" prefWidth="300.0" />
+      <DatePicker fx:id="datePickerTglLahir" layoutX="175.0" layoutY="217.0" prefHeight="26.0" prefWidth="300.0" />
+      <Label layoutX="52.0" layoutY="221.0" text="Tanggal Lahir">
+         <font>
+            <Font name="FreeSans Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="52.0" layoutY="269.0" text="Tempat Lahir">
+         <font>
+            <Font name="FreeSans Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldTempatLahir" layoutX="175.0" layoutY="265.0" prefHeight="26.0" prefWidth="300.0" />
+      <Label layoutX="52.0" layoutY="314.0" text="Alamat Lengkap">
+         <font>
+            <Font name="FreeSans Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldAlamatLengkap" layoutX="174.0" layoutY="310.0" prefHeight="26.0" prefWidth="300.0" />
+      <Label layoutX="52.0" layoutY="364.0" text="Agama">
+         <font>
+            <Font name="FreeSans Bold" size="13.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="boxAgama" layoutX="174.0" layoutY="360.0" prefHeight="26.0" prefWidth="300.0" />
+      <Label layoutX="52.0" layoutY="129.0" text="NIK">
+         <font>
+            <Font name="FreeSans Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldNIK" layoutX="175.0" layoutY="125.0" prefHeight="26.0" prefWidth="300.0" />
+      <Label layoutX="52.0" layoutY="415.0" text="Status Pekerjaan">
+         <font>
+            <Font name="FreeSans Bold" size="13.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="boxStatusPekerjaan" layoutX="174.0" layoutY="411.0" prefHeight="26.0" prefWidth="300.0" />
+      <Label layoutX="52.0" layoutY="465.0" text="Status Kawin">
+         <font>
+            <Font name="FreeSans Bold" size="13.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="boxStatusKawin" layoutX="174.0" layoutY="461.0" prefHeight="26.0" prefWidth="300.0" />
+      <Button fx:id="hapusBtn" layoutX="254.0" layoutY="547.0" mnemonicParsing="false" onAction="#hapusBtnOnClick" prefHeight="37.0" prefWidth="102.0" text="Hapus">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="ubahBtn" layoutX="372.0" layoutY="547.0" mnemonicParsing="false" onAction="#ubahBtnOnClick" prefHeight="37.0" prefWidth="102.0" text="Ubah">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,23 +1,25 @@
 package com.myapp.demotubes.Services;
 
 import com.myapp.demotubes.Entities.Dokumen;
-import com.myapp.demotubes.Entities.Pengajuan;
+import com.myapp.demotubes.Entities.PengajuanDokumen;
+import com.myapp.demotubes.Entities.Properties.Status;
 import com.myapp.demotubes.Entities.Sessions.SessionWarga;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class PengajuanService {
     static String urlDB = "jdbc:sqlite:src/main/resources/com/myapp/demotubes/db/kependudukan.db";
 
+    private static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(urlDB);
+    };
+
     //Insert pengajuan ke db
     public static int insertPengajuanToDB(int idAkun, int idDokumen, String deskripsi, String lokasiBerkas) {
-        try (Connection conn = DriverManager.getConnection(urlDB)) {
+        try (Connection conn = getConnection()) {
             String sql = "INSERT INTO pengajuan_dokumen (id_akun, id_dokumen, deskripsi_pengajuan, tanggal_pengajuan, lokasi_berkas) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, idAkun);
@@ -38,7 +40,7 @@ public class PengajuanService {
     }
 
     public static int getPengajuanIdByAkunDokumen(int idAkun, int idDokumen) {
-       try(Connection conn = DriverManager.getConnection(urlDB)) {
+       try(Connection conn = getConnection()) {
             String sql = "SELECT * FROM pengajuan_dokumen WHERE id_akun = ? AND id_dokumen = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, idAkun);
@@ -53,25 +55,10 @@ public class PengajuanService {
         return 0400;
     }
 
-    public static Dokumen getDokumenByid(int idDokumen){
-        try(Connection conn = DriverManager.getConnection(urlDB)) {
-            String sql = "SELECT * FROM dokumen WHERE id_dokumen = ?";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, idDokumen);
-            ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) {
-                return new Dokumen(rs.getInt("id_dokumen"), rs.getString("nama_dokumen"), rs.getString("deskripsi"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+    public static ObservableList<PengajuanDokumen> getPengajuanByIdAkunForUserView(int idAkun) {
+        ObservableList<PengajuanDokumen> pengajuanDokumenList = FXCollections.observableArrayList();
 
-    public static ObservableList<Pengajuan> getPengajuanByIdAkunForUserView(int idAkun) {
-        ObservableList<Pengajuan> pengajuanList = FXCollections.observableArrayList();
-
-        try (Connection conn = DriverManager.getConnection(urlDB)) {
+        try (Connection conn = getConnection()) {
             String sql = "SELECT pd.*, d.nama_dokumen, d.deskripsi " +
                     "FROM pengajuan_dokumen pd " +
                     "JOIN dokumen d ON pd.id_dokumen = d.id_dokumen " +
@@ -84,23 +71,23 @@ public class PengajuanService {
                 int idPengajuan = rs.getInt("id_pengajuan");
                 int idDokumen = rs.getInt("id_dokumen");
                 String tanggalPengajuan = rs.getString("tanggal_pengajuan");
-                String status = rs.getString("status");
+                Status status = Status.valueOf(rs.getString("status"));
                 String catatanAdmin = rs.getString("catatan_admin");
 
                 Dokumen dokumen = new Dokumen(idDokumen, rs.getString("nama_dokumen"), rs.getString("deskripsi"));
                 //ubah metodenya jadi
-                Pengajuan pengajuan = new Pengajuan(idPengajuan, SessionWarga.getCurrentWarga(), dokumen, tanggalPengajuan, status, catatanAdmin);
-                pengajuanList.add(pengajuan);
+                PengajuanDokumen pengajuanDokumen = new PengajuanDokumen(idPengajuan, SessionWarga.getCurrentWarga(), dokumen, tanggalPengajuan, status, catatanAdmin);
+                pengajuanDokumenList.add(pengajuanDokumen);
             }
-            return pengajuanList;
+            return pengajuanDokumenList;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return pengajuanList;
+        return pengajuanDokumenList;
     }
 
     public static void deletePengajuan(int idPengajuan) {
-        try (Connection conn = DriverManager.getConnection(urlDB)) {
+        try (Connection conn = getConnection()) {
             String sql = "DELETE FROM pengajuan_dokumen WHERE id_pengajuan = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, idPengajuan);

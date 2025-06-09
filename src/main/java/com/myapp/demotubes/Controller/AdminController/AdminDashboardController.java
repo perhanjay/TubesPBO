@@ -218,7 +218,7 @@ public class AdminDashboardController {
         try {
             int[] data = statsService.getPengajuanHarianBulanIni();
             XYChart.Series<String, Number> series = new XYChart.Series<>();
-            series.setName("Pengajuan per Hari");
+            series.setName("PengajuanDokumen per Hari");
 
             for (int i = 1; i <= maxHari; i++) {
                 series.getData().add(new XYChart.Data<>(String.valueOf(i), data[i]));

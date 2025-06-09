@@ -92,12 +92,12 @@
             <Image url="@../img/backgroundPaneRenewed.png" />
          </image>
       </ImageView>
-      <Label fx:id="usernameLabel" layoutX="585.0" layoutY="25.0" text="admin">
+      <Label fx:id="usernameLabel" layoutX="585.0" layoutY="19.0" text="admin">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="477.0" layoutY="25.0" text="Welcome,">
+      <Label layoutX="404.0" layoutY="18.0" text="Welcome, atmint">
          <font>
             <Font name="System Bold" size="20.0" />
          </font></Label>

@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -97,14 +98,18 @@
             <Image url="@../img/backgroundPaneRenewed.png" />
          </image>
       </ImageView>
-      <TableView layoutX="202.0" layoutY="84.0" prefHeight="570.0" prefWidth="699.0">
+      <TableView fx:id="tableView" layoutX="202.0" layoutY="84.0" prefHeight="570.0" prefWidth="699.0">
         <columns>
-          <TableColumn prefWidth="200.0" text="Nama" />
-          <TableColumn prefWidth="161.60003662109375" text="NIK" />
-            <TableColumn prefWidth="145.5999755859375" text="Tanggal Lahir" />
-            <TableColumn prefWidth="134.39990234375" text="Agama" />
+          <TableColumn fx:id="namaCol" prefWidth="188.0" text="Nama" />
+          <TableColumn fx:id="nikCol" prefWidth="132.0" text="NIK" />
+            <TableColumn fx:id="jenisKelaminCol" prefWidth="100.0" text="Jenis Kelamin" />
+            <TableColumn fx:id="tglLahirCol" prefWidth="152.00006103515625" text="Tangal Lahir" />
+            <TableColumn fx:id="agamaCol" prefWidth="124.7999267578125" text="Agama" />
         </columns>
       </TableView>
-      <Button layoutX="783.0" layoutY="44.0" mnemonicParsing="false" text="Selengkapnya" />
+      <Button layoutX="783.0" layoutY="30.0" mnemonicParsing="false" onAction="#selengkapnyaBtnOnClick" text="Selengkapnya" />
+      <TextField fx:id="searchField" layoutX="229.0" layoutY="31.0" prefHeight="26.0" prefWidth="228.0" promptText="Cari nama warga" />
+      <Button fx:id="searchBtn" layoutX="467.0" layoutY="30.0" mnemonicParsing="false" onAction="#searchBtnOnClick" prefHeight="26.0" prefWidth="67.0" text="Cari" />
+      <Button fx:id="tambahWargaBtn" layoutX="658.0" layoutY="30.0" mnemonicParsing="false" onAction="#tambahWargaBtnOnClick" text="Tambah Warga" />
    </children>
 </AnchorPane>

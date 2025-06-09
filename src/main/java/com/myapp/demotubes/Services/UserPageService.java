@@ -11,11 +11,15 @@ import java.sql.*;
 public class UserPageService {
     static String urlDB = "jdbc:sqlite:src/main/resources/com/myapp/demotubes/db/kependudukan.db";
 
+    private static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(urlDB);
+    };
     public static Warga getWargaById(int idWarga){
-        try(Connection conn = DriverManager.getConnection(urlDB)){
-            Statement stmt = conn.createStatement();
-            String url = "Select * from warga where id_warga="+idWarga+";";
-            ResultSet resultSet = stmt.executeQuery(url);
+        try(Connection conn = getConnection()){
+            String sql = "Select * from warga where id_warga = ? ;";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, idWarga);
+            ResultSet resultSet = pstmt.executeQuery();
 
             int id = resultSet.getInt("id_warga");
             String nama = resultSet.getString("nama");
@@ -36,20 +40,30 @@ public class UserPageService {
     }
 
     public static void insertWargaToDB(String nama, String jenisKelamin, String tanggalLahir, String tempatLahir, String alamat, String agama, String nik, String statusPekerjaan, String statusKawin) throws SQLException {
-        try(Connection conn = DriverManager.getConnection(urlDB)){
-        String sql = "INSERT INTO warga (nama, jenis_kelamin, tanggal_lahir, tempat_lahir, alamat_lengkap, agama, nik, status_pekerjaan, status_kawin) VALUES ('"+nama+"','"+jenisKelamin+"','"+tanggalLahir+"','"+tempatLahir+"','"+alamat+"','"+agama+"','"+nik+"','"+statusPekerjaan+"','"+statusKawin+"');";
-        Statement stmt = conn.createStatement();
-        stmt.executeUpdate(sql);
+        try(Connection conn = getConnection()){
+        String sql = "INSERT INTO warga (nama, jenis_kelamin, tanggal_lahir, tempat_lahir, alamat_lengkap, agama, nik, status_pekerjaan, status_kawin) VALUES (?,?,?,?,?,?,?,?,?);";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, nama);
+        pstmt.setString(2, jenisKelamin);
+        pstmt.setString(3, tanggalLahir);
+        pstmt.setString(4, tempatLahir);
+        pstmt.setString(5, alamat);
+        pstmt.setString(6, agama);
+        pstmt.setString(7, nik);
+        pstmt.setString(8, statusPekerjaan);
+        pstmt.setString(9, statusKawin);
+        pstmt.executeUpdate();
     }catch (Exception e){
         e.printStackTrace();
         }
     }
 
     public static Integer getWargaId(String nik){
-        try(Connection conn = DriverManager.getConnection(urlDB)){
-            String sql = "SELECT * FROM warga WHERE nik='"+nik+"';";
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
+        try(Connection conn =getConnection()){
+            String sql = "SELECT * FROM warga WHERE nik = ? ;";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, nik);
+            ResultSet rs = pstmt.executeQuery();
             if(rs.next()){
                 return rs.getInt("id_warga");
             }
@@ -60,7 +74,7 @@ public class UserPageService {
     }
 
     public static void insertIdWargaToAkun(int idWarga, String username) throws SQLException {
-        try(Connection conn = DriverManager.getConnection(urlDB)){
+        try(Connection conn =getConnection()){
             String sql = "UPDATE akun SET id_warga = ? WHERE username = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, idWarga);
@@ -70,5 +84,7 @@ public class UserPageService {
             e.printStackTrace();
         }
     }
+
+
 
 }

@@ -18,7 +18,8 @@ public enum StatusKawin {
 
     public static StatusKawin getStatusKawin(String statusKawin) {
         for (StatusKawin sk : StatusKawin.values()) {
-            if (sk.statusKawin.equalsIgnoreCase(statusKawin)) {
+            if (sk.statusKawin.equalsIgnoreCase(statusKawin) ||
+                    sk.name().equalsIgnoreCase(statusKawin)) {
                 return sk;
             }
         }

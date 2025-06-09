@@ -31,7 +31,7 @@ public class UserAjukanDokumenController {
 
     @FXML
     private void userIsiBiodataOnClick(){
-        SessionAkun.getCurrentAkun().viewLoader((Stage) rootAnchorPaneDokumen.getScene().getWindow(), 1, "User Dashboard");
+        SessionAkun.getCurrentAkun().viewLoader((Stage) rootAnchorPaneDokumen.getScene().getWindow(), 1, "Pengguna Dashboard");
     }
 
     @FXML

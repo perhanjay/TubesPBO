@@ -1,7 +1,7 @@
 package com.myapp.demotubes.Controller.UserController;
 
 import com.myapp.demotubes.Entities.Dokumen;
-import com.myapp.demotubes.Entities.Pengajuan;
+import com.myapp.demotubes.Entities.PengajuanDokumen;
 import com.myapp.demotubes.Entities.Sessions.SessionAkun;
 import com.myapp.demotubes.Services.PengajuanService;
 import javafx.beans.property.SimpleStringProperty;
@@ -27,19 +27,19 @@ public class UserStatusController {
     private Button hapusBtn;
 
     @FXML
-    private TableView<Pengajuan> mainTable;
+    private TableView<PengajuanDokumen> mainTable;
 
     @FXML
-    TableColumn<Pengajuan, String> jenisDokumenCol;
+    TableColumn<PengajuanDokumen, String> jenisDokumenCol;
 
     @FXML
-    TableColumn<Pengajuan, String> tanggalDiajukanCol;
+    TableColumn<PengajuanDokumen, String> tanggalDiajukanCol;
 
     @FXML
-    TableColumn<Pengajuan, String> statusCol;
+    TableColumn<PengajuanDokumen, String> statusCol;
 
     @FXML
-    TableColumn<Pengajuan, String> catatanAdminCol;
+    TableColumn<PengajuanDokumen, String> catatanAdminCol;
 
     @FXML
     private void ajukanDokumenOnClick(){
@@ -47,19 +47,19 @@ public class UserStatusController {
     }
     @FXML
     private void userIsiBiodataOnClick(){
-        SessionAkun.getCurrentAkun().viewLoader((Stage) rootAnchorPane.getScene().getWindow(), 1, "User Dashboard");
+        SessionAkun.getCurrentAkun().viewLoader((Stage) rootAnchorPane.getScene().getWindow(), 1, "Pengguna Dashboard");
 
     }
 
     @FXML
     private void hapusBtnOnClick(){
-        Pengajuan selectedPengajuan = mainTable.getSelectionModel().getSelectedItem();
-        if (selectedPengajuan != null) {
-            PengajuanService.deletePengajuan(selectedPengajuan.getId());
-            mainTable.getItems().remove(selectedPengajuan);
-            System.out.println("Pengajuan deleted: " + selectedPengajuan.getId());
+        PengajuanDokumen selectedPengajuanDokumen = mainTable.getSelectionModel().getSelectedItem();
+        if (selectedPengajuanDokumen != null) {
+            PengajuanService.deletePengajuan(selectedPengajuanDokumen.getId());
+            mainTable.getItems().remove(selectedPengajuanDokumen);
+            System.out.println("PengajuanDokumen deleted: " + selectedPengajuanDokumen.getId());
         } else {
-            System.out.println("No Pengajuan selected for deletion.");
+            System.out.println("No PengajuanDokumen selected for deletion.");
         }
     }
 
@@ -68,7 +68,7 @@ public class UserStatusController {
         usernameLabel.setText(SessionAkun.getCurrentAkun().getUsername().toUpperCase());
         System.out.println("UserStatusController initialized");
 
-        ObservableList<Pengajuan> data = FXCollections.observableArrayList(PengajuanService.getPengajuanByIdAkunForUserView(SessionAkun.getCurrentAkun().getId()));
+        ObservableList<PengajuanDokumen> data = FXCollections.observableArrayList(PengajuanService.getPengajuanByIdAkunForUserView(SessionAkun.getCurrentAkun().getId()));
 
         jenisDokumenCol.setCellValueFactory(cellData -> {
             Dokumen dokumen = cellData.getValue().getDokumen();

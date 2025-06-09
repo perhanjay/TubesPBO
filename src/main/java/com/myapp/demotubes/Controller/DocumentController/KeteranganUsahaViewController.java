@@ -79,10 +79,10 @@ public class KeteranganUsahaViewController {
     @FXML
     private void userIsiBiodataOnClick(){
         if (isDone) {
-            SessionAkun.getCurrentAkun().viewLoader((Stage) rootAnchorPane.getScene().getWindow(), 1, "User Dashboard");
+            SessionAkun.getCurrentAkun().viewLoader((Stage) rootAnchorPane.getScene().getWindow(), 1, "Pengguna Dashboard");
         }
         if (alertConfirmation() == ButtonType.OK) {
-            SessionAkun.getCurrentAkun().viewLoader((Stage) rootAnchorPane.getScene().getWindow(), 1, "User Dashboard");
+            SessionAkun.getCurrentAkun().viewLoader((Stage) rootAnchorPane.getScene().getWindow(), 1, "Pengguna Dashboard");
         } else{
             return;
         }
@@ -170,13 +170,13 @@ public class KeteranganUsahaViewController {
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Konfirmasi Pengajuan");
+        alert.setTitle("Konfirmasi PengajuanDokumen");
         alert.setContentText("Pastikan bahwa semua data anda sudah benar.\nApakah anda yakin ingin mengirim permohonan ini?");
         alert.showAndWait();
         ButtonType confirmation = alert.getResult();
 
         if (confirmation != ButtonType.OK) {
-            System.out.println("Pengajuan dibatalkan");
+            System.out.println("PengajuanDokumen dibatalkan");
             return;
         }
 
@@ -184,7 +184,7 @@ public class KeteranganUsahaViewController {
 
         if (isSukses == 1) {
             Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-            successAlert.setTitle("Pengajuan Berhasil");
+            successAlert.setTitle("PengajuanDokumen Berhasil");
             successAlert.setContentText("Permohonan Keterangan Usaha anda telah berhasil dikirim. \nSilakan tunggu proses verifikasi dari petugas secara berkala.");
             successAlert.showAndWait();
         } else{

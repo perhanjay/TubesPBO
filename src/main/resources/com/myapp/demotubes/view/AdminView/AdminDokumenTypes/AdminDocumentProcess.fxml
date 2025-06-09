@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootAnchorPane" prefHeight="560.0" prefWidth="600.0" style="-fx-background-color: #F6F4F0;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myapp.demotubes.Controller.AdminController.AdminDocumentTypesController.AdminDocumentProcessController">
+   <children>
+      <Label layoutX="222.0" layoutY="36.0" text="Proses">
+         <font>
+            <Font name="FreeSans Bold" size="13.0" />
+         </font></Label>
+      <Label layoutX="205.0" layoutY="14.0" text="PROSES PERMOHONAN">
+         <font>
+            <Font name="FreeSans Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="hapusPengajuanBtn" layoutX="402.0" layoutY="176.0" mnemonicParsing="false" onAction="#hapusPengajuanBtnOnClick" prefHeight="26.0" prefWidth="146.0" text="Hapus Pengajuan" />
+      <Button fx:id="tolakPengajuanBtn" layoutX="402.0" layoutY="142.0" mnemonicParsing="false" onAction="#tolakPengajuanBtnOnClick" prefHeight="26.0" prefWidth="146.0" text="Tolak Pengajuan" />
+      <Label layoutX="37.0" layoutY="360.0" text="Deskripsi Pemohon">
+         <font>
+            <Font name="FreeSans Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="493.0" text="Unggahan Prasyarat Permohonan">
+         <font>
+            <Font name="FreeSans Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="deskripsiSingkat" editable="false" layoutX="36.0" layoutY="385.0" prefHeight="100.0" prefWidth="400.0" promptText="Alasan anda mengajukan permohonan dokumen ini, berikan konteks relevan." />
+      <Button fx:id="setujuiPengajuanBtn" layoutX="403.0" layoutY="106.0" mnemonicParsing="false" onAction="#setujuiPengajuanBtnOnClick" prefHeight="26.0" prefWidth="146.0" text="Setujui Pengajuan" />
+      <Button fx:id="prosesPengajuanBtn" layoutX="403.0" layoutY="71.0" mnemonicParsing="false" onAction="#prosesPengajuanBtnOnClick" prefHeight="26.0" prefWidth="145.0" text="Proses Pengajuan" />
+      <Label layoutX="35.0" layoutY="226.0" text="Catatan">
+         <font>
+            <Font name="FreeSans Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="catatanAdmin" layoutX="34.0" layoutY="249.0" prefHeight="100.0" prefWidth="400.0" />
+      <Label layoutX="38.0" layoutY="520.0" text="Berkas pemohon terdapat pada folder   :">
+         <font>
+            <Font name="FreeSans" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="62.0" text="Detail Permohonan">
+         <font>
+            <Font name="FreeSans Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="35.0" layoutY="91.0" text="Nama">
+         <font>
+            <Font name="FreeSans" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="35.0" layoutY="114.0" text="NIK">
+         <font>
+            <Font name="FreeSans" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="35.0" layoutY="135.0" text="Jenis Kelamin">
+         <font>
+            <Font name="FreeSans" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="35.0" layoutY="158.0" text="Tanggal Diajukan">
+         <font>
+            <Font name="FreeSans" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="155.0" layoutY="91.0" text=":">
+         <font>
+            <Font name="FreeSans" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="155.0" layoutY="113.0" text=":">
+         <font>
+            <Font name="FreeSans" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="155.0" layoutY="136.0" text=":">
+         <font>
+            <Font name="FreeSans" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="155.0" layoutY="156.0" text=":">
+         <font>
+            <Font name="FreeSans" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelNama" layoutX="169.0" layoutY="92.0" text="Nama">
+         <font>
+            <Font name="FreeSans" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelNik" layoutX="170.0" layoutY="114.0" text="NIK">
+         <font>
+            <Font name="FreeSans" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelJenisKelamin" layoutX="170.0" layoutY="136.0" text="Jenis Kelamin">
+         <font>
+            <Font name="FreeSans" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelTglDiajukan" layoutX="171.0" layoutY="159.0" text="Tanggal Lahir">
+         <font>
+            <Font name="FreeSans" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="191.0" text="Status pengajuan: ">
+         <font>
+            <Font name="FreeSans Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="statusPengajuan" layoutX="160.0" layoutY="191.0" text="Status pengajuan">
+         <font>
+            <Font name="FreeSans Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="267.0" layoutY="520.0" text=" /BerkasUnggahanPengguna/username/">
+         <font>
+            <Font name="FreeSans Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="dokName" layoutX="270.0" layoutY="36.0" text="SK Kelahiran">
+         <font>
+            <Font name="FreeSans Bold" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

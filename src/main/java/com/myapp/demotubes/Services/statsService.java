@@ -47,26 +47,6 @@ public class statsService {
         """);
     }
 
-//    public static int getTotalPengajuanSKKelahiran() {
-//        return getCount("SELECT COUNT(*) FROM pengajuan_dokumen WHERE id_dokumen = 1");
-//
-//    }
-//    public static int getTotalPengajuanSKKematian() {
-//        return getCount("SELECT COUNT(*) FROM pengajuan_dokumen WHERE id_dokumen = 2");
-//    }
-//
-//    public static int getTotalPengajuanSKU() {
-//        return getCount("SELECT COUNT(*) FROM pengajuan_dokumen WHERE id_dokumen = 3");
-//    }
-//
-//    public static int getTotalPengajuanSKTM() {
-//        return getCount("SELECT COUNT(*) FROM pengajuan_dokumen WHERE id_dokumen = 4");
-//    }
-//
-//    public static int getTotalPengajuanSKDomisili() {
-//        return getCount("SELECT COUNT(*) FROM pengajuan_dokumen WHERE id_dokumen = 5");
-//    }
-
     public static Map<String, Integer> getJumlahWargaByJenisKelamin() {
         Map<String, Integer> dataMap = new HashMap<>();
         String sql = "SELECT jenis_kelamin, COUNT(*) as jumlah FROM warga GROUP BY jenis_kelamin";

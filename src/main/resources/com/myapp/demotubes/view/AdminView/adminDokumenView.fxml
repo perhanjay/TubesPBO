@@ -97,14 +97,14 @@
             <Image url="@../img/backgroundPaneRenewed.png" />
          </image>
       </ImageView>
-      <TableView layoutX="202.0" layoutY="73.0" prefHeight="582.0" prefWidth="700.0">
+      <TableView fx:id="tableViewDokumen" layoutX="202.0" layoutY="73.0" prefHeight="582.0" prefWidth="700.0">
         <columns>
-          <TableColumn prefWidth="148.0" text="Nama Pemohon" />
-          <TableColumn prefWidth="168.79998779296875" text="Jenis Dokumen" />
-            <TableColumn prefWidth="213.60003662109375" text="Tanggal Diajukan" />
-            <TableColumn prefWidth="168.79998779296875" text="Status" />
+          <TableColumn fx:id="kolomNama" prefWidth="148.0" text="Nama Pemohon" />
+          <TableColumn fx:id="kolomJenisDokumen" prefWidth="168.79998779296875" text="Jenis Dokumen" />
+            <TableColumn fx:id="kolomTglDiajukan" prefWidth="213.60003662109375" text="Tanggal Diajukan" />
+            <TableColumn fx:id="kolomStatus" prefWidth="168.79998779296875" text="Status" />
         </columns>
       </TableView>
-      <Button layoutX="776.0" layoutY="29.0" mnemonicParsing="false" text="Selengkapnya" />
+      <Button layoutX="776.0" layoutY="29.0" mnemonicParsing="false" onAction="#selengkapnyaBtnOnClick" text="Selengkapnya" />
    </children>
 </AnchorPane>

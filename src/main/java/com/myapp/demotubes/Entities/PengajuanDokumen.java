@@ -1,20 +1,25 @@
 package com.myapp.demotubes.Entities;
 
-public class Pengajuan {
+import com.myapp.demotubes.Entities.Properties.Status;
+
+public class PengajuanDokumen {
     private Integer id;
     private Warga pemohon;
     private Dokumen dokumen;
     private String deskripsiPengajuan;
     private String tanggalPengajuan;
-    private String status;
+    private Status status;
     private String catatan;
 
-    public Pengajuan(Warga pemohon, Dokumen dokumen) {
+    public PengajuanDokumen() {
+    }
+
+    public PengajuanDokumen(Warga pemohon, Dokumen dokumen) {
         this.pemohon = pemohon;
         this.dokumen = dokumen;
     }
 
-    public Pengajuan(int idPengajuan, Warga pemohon, Dokumen dokumen, String tanggalPengajuan, String status, String catatan) {
+    public PengajuanDokumen(int idPengajuan, Warga pemohon, Dokumen dokumen, String tanggalPengajuan, Status status, String catatan) {
         this.id = idPengajuan;
         this.pemohon = pemohon;
         this.dokumen = dokumen;
@@ -23,11 +28,11 @@ public class Pengajuan {
         this.catatan = catatan;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
